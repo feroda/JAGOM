@@ -1,0 +1,28 @@
+exit 0
+
+Needs Python>=2.5
+
+aptitude install postgresql postfix postfix-pgsql sqlite python-setuptools subversion python-dev libsqlite3-dev
+
+easy_install virtualenv (need version >= 1.4.7)
+
+virtualenv --no-site-packages --clear --distribute trac_venv
+
+. trac_venv/bin/activate
+pip install Babel
+pip install Trac==dev
+Segui la guida di installazione di Trac
+deactivate
+
+virtualenv --no-site-packages --clear --distribute pinax_venv
+
+. pinax_venv/bin/activate
+pip install PIL
+pip install pysqlite
+pip install Pinax
+pinax-admin setup_project -b sample_group JAGOM
+cd JAGOM
+python manage.py syncdb
+python manage.py runserver
+
+
