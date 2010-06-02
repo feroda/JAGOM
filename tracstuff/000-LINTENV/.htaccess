@@ -1,0 +1,6 @@
+AuthType Basic
+AuthName "Lint grain"
+AuthUserFile /var/www/jagom/trac_venv/tracs/000-LINTENV/.htpasswd
+Require valid-user
+<Location /trac/000-LINTENV/login>
+</Location>
