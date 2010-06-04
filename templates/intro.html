@@ -1,0 +1,47 @@
+{% extends "intro_base.html" %}
+{% load i18n %}
+{% load account_tags %}
+{% load ifsetting_tag %}
+{% load openid_tags %}
+
+{% block head_title %}JAGOM is A Grain Of Mustard seed{% endblock %} 
+        {% block extra_head_base %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+            <link rel="stylesheet" href="{{ STATIC_URL }}css/intro.css" />
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+
+{% block logo_link_image %}<a href="{% url home %}"><img src="http://www.jagom.org/static/logo.jpg" alt="JAGOM"/></a>{% endblock %}
+    
+{% block login %}
+    {% if user.is_authenticated %}
+        {% ifopenid %}<img src="{{ STATIC_URL }}images/openid-icon.png" alt="Logged in with OpenID" />{% endifopenid %}<b>{% user_display user %}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+    {% else %}
+        <a href="{% url acct_login %}">{% trans "Login" %}</a> {% ifsetting ACCOUNT_OPEN_SIGNUP %}{% trans "or" %} <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a>{% endifsetting %}
+    {% endif %}
+{% endblock %}
+
+{% block locale_switcher %}
+    <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
+        {% csrf_token %}
+        <select name="language" onchange="$('#locale_switcher').submit()">
+            {% for lang in LANGUAGES %}
+                <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+            {% endfor %}
+        </select>
+    </form>
+{% endblock %}
+        
+        {% block body %}
+            <img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" />
+            <span class="inline"><video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element.</video></span>
+            <p />
+            <a href="#" onclick="$('.logo').fadeIn(); $('img#big-logo').hide(); $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
+        {% endblock %}
+            
+{% block footer %}
+<div class="legal center">
+    {% trans "&copy; 2010 &lt;Luca Ferroni&gt;" %}
+</div>
+{% endblock %}
+
