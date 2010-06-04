@@ -1,0 +1,30 @@
+.italic { font-style : italic; }
+.normal { font-size  : normal; }
+.italic-normal { font-style : italic; font-size : medium; }
+.center { text-align : center; }
+.vcenter { text-align : center; vertical-align : middle; }
+.right { float : right; }
+
+#head {
+    background: none;
+    border-bottom: 3px solid #993; /* tab border */
+    position: relative;
+}
+#head .logo {
+    height: 140px;
+    padding-top: 0;
+}
+
+#head .login {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    color: #993; /* login bar text colour */
+}
+#head .login a, #head .login a:visited {
+    color: #993; /* login bar link colour */
+}
+#head .login a:hover {
+    color: #c6c400; /* login bar link hover colour */
+}
+
