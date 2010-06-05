@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/site_tabs.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}tasks/css/tasks.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}pinax/css/groups.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
@@ -20,7 +21,7 @@
     {% endif %}
 {% endblock %}
 
-{% block logo_link_image %}<a href="{% url home %}"><img src="{{ STATIC_URL }}pinax/img/logo.png" alt="Pinax"/></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url home %}"><img src="http://www.jagom.org/static/logo.jpg" alt="JAGOM"/></a>{% endblock %}
 
 {% block right_tabs %}
     {% if user.is_authenticated %}
