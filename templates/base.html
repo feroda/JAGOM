@@ -1,14 +1,18 @@
 {% extends "verybase.html" %}
-
+{% load i18n %}
+        
         {% block header %}
-        <div id="head" class="appear">
-            <div class="logo" dir="ltr" style="display:none;">{% block logo_link_image %}{% endblock %}</div>
+        <div id="head">
+            <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
             <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+            <div id="left_tabs" >{% block left_tabs %}{% endblock %}</div>
+            <div id="right_tabs" >{% block right_tabs %}{% endblock %}</div>
         </div>
-        {% endblock %}
+        <div id="subnav" class="clearfix">{% block subnav_base %}<div class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>{% endblock %}</div>
+        {% endblock header %}
         
         {% block body_outer %}
-        <div id="intro-body">
+        <div id="body">
             {% if messages %}
                 <ul id="messages">
                     {% for message in messages %}
@@ -25,3 +29,4 @@
             
         </div>
         {% endblock %}
+        
