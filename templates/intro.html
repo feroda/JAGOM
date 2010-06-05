@@ -32,16 +32,43 @@
     </form>
 {% endblock %}
         
-        {% block body %}
-            <img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" />
-            <span class="inline"><video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element.</video></span>
-            <p />
-            <a href="#" onclick="$('.logo').fadeIn(); $('img#big-logo').hide(); $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
-        {% endblock %}
+{% block body %}
+    <div class="table_layout center">
+        <span class="appear cell_layout" id="box-fortune">Loading fortune...</span>
+        <span class="cell_layout"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" /></span>
+        <span class="cell_layout appear" style="vertical-align:middle;">
+            <h2 onclick="$(this).next('div').show('slow');"><a href="#">{% trans "What is this?" %}</a></h2>
+            <div style="display:none; max-width:250px;" class="text-justify">
+            {% blocktrans %}
+            JAGOM is a social network and a projects forge.<p />
+            Projects are small grain of mustard seeds that JAGOM helps to grow, these grains are seeded in gardens which are groups of people who really care of the seed and do the job to make the seed grow. People are the seeders.<p />
+            <a href="#TODO">More on our vision</a>
+            {% endblocktrans %}
+            </div>
+        </span>
+    </div>
+    <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element.</video>
+    <p />
+    <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video'));$('.logo').fadeIn();  $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
+{% endblock %}
             
 {% block footer %}
-<div class="legal center">
-    {% trans "&copy; 2010 &lt;Luca Ferroni&gt;" %}
-</div>
+    <div class="legal text-center">
+        {% trans "&copy; 2010 &lt;Luca Ferroni&gt;" %}
+    </div>
 {% endblock %}
 
+{% block extra_body_base %}
+    <script type="text/javascript">
+        var timerInterval = 10000;
+        function periodicalFortune() {
+            $('#box-fortune').load('{% url get_fortune %}');
+            setTimeout(periodicalFortune, timerInterval); 
+        };
+
+        $('document').ready(function() {
+            periodicalFortune();
+        });
+    </script>
+    {% block extra_body %}{% endblock %}
+{% endblock %}
