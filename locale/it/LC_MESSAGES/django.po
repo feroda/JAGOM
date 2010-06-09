@@ -222,7 +222,7 @@ msgstr "Gruppi"
 
 #: templates/site_base.html:42
 msgid "Project"
-msgstr "Progetti"
+msgstr "Progetto"
 
 #: templates/site_base.html:43
 msgid "Notices"

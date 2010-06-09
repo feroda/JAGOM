@@ -104,7 +104,18 @@
         {% endif %}
         
         {% if user.is_authenticated %}
-            <h2><a href="{{ PRJS_URL }}/{{ project.slug }}">{% trans "Let your grain grow!" %}</a></h2>
+            <h2>{% trans "Keep in touch with your grain members" %}</h2>
+            <p>{% blocktrans %}JAGOM has setup those mailing-list in order to help you to keep in touch with your active members or simply people who are interested in your project{% endblocktrans %}
+                <ul>
+                    {# TO BE IMPROVED BY EXTENDING project WITH A PROPERTY #}
+                    <li><a href="mailto:">chiinteressa@{{ project.slug }}.g.jagom.org</a></li>
+                    <li><a href="mailto:">chicitiene@{{ project.slug }}.g.jagom.org</a></li>
+                </ul>
+            </p>
+            <h2>{% trans "Let your grain grow!" %}</h2>
+            <p>
+                {% trans "Go to" %} <a href="{{ PRJS_URL }}/{{ project.slug }}">{% trans "the project management page" %}</a>
+            </p>
             {% comment %}
             <h2>{% trans "Discussion Topics" %}{% if project.topics.all.count %} ({{ project.topics.all.count }}){% endif %}</h2>
             
