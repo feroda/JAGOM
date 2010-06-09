@@ -11,14 +11,15 @@ SITE_NAME = "JAGOM"
 FORTUNE_BIN = "/usr/games/fortune"
 FORTUNE_PATH = os.path.join(PROJECT_ROOT, "media", "quotes")
 
-#TRAC settings
+#Grain environment settings
 
-TRACLINTPROJECT_PATH = os.path.join(PROJECT_ROOT, "tracstuff", "000-LINTENV")
-TRACENV_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "trac_venv")
-TRACENVS_PATH = os.path.join(TRACENV_ROOT, "tracs")
+PRJ_LINT_PATH = os.path.join(PROJECT_ROOT, "tracstuff", "000-LINTENV")
+PRJ_ENV_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), "trac_venv")
+PRJS_ENVS_PATH = os.path.join(PRJ_ENV_ROOT, "tracs")
+PRJS_URL = "http://www.jagom.org/trac/"
 
-NEW_TRAC_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "new_trac_project.sh")
-UPDATE_TRAC_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "update_trac_project.sh")
-CLONE_TRAC_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "clone_trac_project.sh")
+NEW_PRJ_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "new_project.sh")
+UPDATE_PRJ_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "update_project.sh")
+CLONE_PRJ_ENV_SCRIPT = os.path.join(PROJECT_ROOT, "bin", "clone_project.sh")
 
 from final_settings import *

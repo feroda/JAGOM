@@ -23,23 +23,27 @@ if [ ! -z "$2" ]; then
     fi
 fi
 
-TRACENVS_PATH=$(settings_var TRACENVS_PATH )
-TRACLINTPROJECT_PATH=$(settings_var TRACLINTPROJECT_PATH )
-PRJ_ROOT="$TRACENVS_PATH/$PRJ"
+PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
+PRJ_LINT_PATH=$(settings_var PRJ_LINT_PATH )
+PRJ_ROOT="$PRJ_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 
-if [ ! -d "$TRACENVS_PATH" ]; then
-    echo "Error: directory $TRACENVS_PATH does not exist"
+if [ ! -d "$PRJS_ENVS_PATH" ]; then
+    echo "Error: directory $PRJS_ENVS_PATH does not exist"
     exit 102
 fi
 
 # Update name and description if present
 if [ "$NAME" ]; then
-    echo $NAME
     sed -i "s/^name\ =.*/name = $NAME/g" $PRJ_ROOT_CONF_FILE
     if [ "$DESCRIPTION" ]; then
         sed -i "s/^descr\ =.*/descr = $DESCRIPTION/g" $PRJ_ROOT_CONF_FILE
     fi
 fi
 
-exit 0
+chmod -R u+w $PRJ_ROOT
+
+for f in VERSION README; do
+	chmod u-w $PRJ_ROOT/$f
+done
+
