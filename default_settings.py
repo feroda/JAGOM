@@ -173,6 +173,8 @@ INSTALLED_APPS = [
     # project
     "about",
     "basic_groups",
+    "fortune",
+    "tracstuff",
 ]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
