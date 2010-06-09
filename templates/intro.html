@@ -37,14 +37,30 @@
         <span class="appear cell_layout" id="box-fortune">Loading fortune...</span>
         <span class="cell_layout"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" /></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
+            <p>
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% blocktrans %}
             JAGOM is a social network and a projects forge.<p />
-            Projects are small grain of mustard seeds that JAGOM helps to grow, these grains are seeded in gardens which are groups of people who really care of the seed and do the job to make the seed grow. People are the seeders.<p />
+            Projects are small grain of mustard seeds that JAGOM helps to grow.<br />These grains are seeded in gardens which are groups of people who really care of the seed and do the job to make the seed grow. People are the seeders.<p />
             <a href="#TODO">More on our vision</a>
             {% endblocktrans %}
             </div>
+            </p><hr /><p>
+            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
+            <div style="display:none; max-width:250px;" class="text-justify">
+            {% url acct_login as login_url %}
+            
+            <p class="what_next">
+                {% ifsetting ACCOUNT_OPEN_SIGNUP %}
+                    {% url acct_signup as signup_url %}
+                    {% blocktrans %}Start by <a href="{{ signup_url }}">signing up</a> and <a href="{{ login_url }}">logging in</a>.{% endblocktrans %}
+                {% else %}
+                    {% blocktrans %}Start by <a href="{{ login_url }}">logging in</a>.{% endblocktrans %}
+                {% endifsetting %}
+            </p>
+            </div>
+            </p>
         </span>
     </div>
     <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element.</video>
