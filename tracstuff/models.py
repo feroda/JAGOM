@@ -12,13 +12,13 @@ def activate_trac_env(sender, **kwargs):
 
     if kwargs['created']:
         subprocess.Popen([ 
-            settings.NEW_TRAC_ENV_SCRIPT, 
+            settings.NEW_PRJ_ENV_SCRIPT, 
             prj.slug, prj.name, prj.description
         ], env=env)
 
     else:
         subprocess.Popen([
-            settings.UPDATE_TRAC_ENV_SCRIPT,
+            settings.UPDATE_PRJ_ENV_SCRIPT,
             prj.slug, prj.name, prj.description
         ], env=env)
 
