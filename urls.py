@@ -27,7 +27,7 @@ else:
 urlpatterns = patterns("",
     url(r"^$", direct_to_template, {
         "template": "intro.html",
-    }, name="home"),
+    }, name="intro"),
     
     url(r"^home/$", direct_to_template, {
         "template": "homepage.html",
