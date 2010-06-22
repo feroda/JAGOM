@@ -43,8 +43,11 @@
             {% blocktrans %}
             JAGOM is a social network and a projects forge.<p />
             Projects are small grain of mustard seeds that JAGOM helps to grow.<br />These grains are seeded in gardens which are groups of people who really care of the seed and do the job to make the seed grow. People are the seeders.<p />
-            <a href="#TODO">More on our vision</a>
             {% endblocktrans %}
+            <p>
+                <a href="http://www.jagom.org/trac/JAGOM/wiki" target="_blank">{% trans "More on our vision" %}</a>
+                <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
+            </p>
             </div>
             </p><hr /><p>
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
@@ -63,9 +66,11 @@
             </p>
         </span>
     </div>
-    <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element.</video>
-    <p />
-    <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video'));$('.logo').fadeIn();  $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
+    <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
+    </p>
+    <p class="what_next">
+        <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video'));$('.logo').fadeIn();  $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
+    </p>
 {% endblock %}
             
 {% block footer %}
