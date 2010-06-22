@@ -33,6 +33,7 @@
         </select>
     </form>
 {% endblock %}
+{% comment %}
 {% block right_tabs %}
     {% if user.is_authenticated %}
         <ul class="tabs">{% spaceless %}
@@ -44,14 +45,14 @@
         {% endspaceless %}</ul>
     {% endif %}
 {% endblock %}
+{% endcomment %}
 
 {% block footer %}
 <div class="legal">
-    {% trans "&copy; 2010 &lt;your company here&gt;" %}
+    &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">beFair s.n.c.</a>&gt;
     - <a href="{% url about %}">{% trans "About" %}</a>
     - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
     - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-    - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
 </div>
 {% endblock %}
 
