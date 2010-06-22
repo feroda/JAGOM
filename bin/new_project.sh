@@ -25,7 +25,7 @@ fi
 
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
 PRJ_LINT_PATH=$(settings_var PRJ_LINT_PATH )
-PRJ_ROOT="$PRJ_ENVS_PATH/$PRJ"
+PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 
 if [ ! -d "$PRJS_ENVS_PATH" ]; then
