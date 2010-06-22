@@ -1,0 +1,51 @@
+.italic { font-style : italic; }
+.normal { font-size  : normal; }
+.italic-normal { font-style : italic; font-size : medium; }
+.text-justify { text-align : justify; }
+.text-center { text-align : center; }
+.text-right { text-align : right; }
+.text-left { text-align : left; }
+.text-vcenter { text-align : center; vertical-align : middle; }
+.center { margin : 0 auto; }
+.right { float : right; }
+.spacer { clear : both; }
+.cell_layout { display : table-cell; vertical-align : top; padding:0.5em;}
+.row_layout  { display : table-row; }
+.row_group_layout { display : table-row-group; }
+.table_layout { display : table; }
+.inline { display : inline; }
+
+#head {
+    background: none;
+    border-bottom: 3px solid #993; /* tab border */
+    position: relative;
+}
+#head .logo {
+    height: 140px;
+    padding-top: 0;
+}
+
+#head .login {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    color: #993; /* login bar text colour */
+}
+#head .login a, #head .login a:visited {
+    color: #993; /* login bar link colour */
+}
+#head .login a:hover {
+    color: #c6c400; /* login bar link hover colour */
+}
+
+#box-fortune {
+    color: #993;
+    padding: 1em;
+    text-align: left;
+    max-width: 15em;
+}
+
+#box-fortune .author {
+    margin-top: 0.3em;
+    text-align:right;
+}

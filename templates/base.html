@@ -1,0 +1,32 @@
+{% extends "verybase.html" %}
+{% load i18n %}
+        
+        {% block header %}
+        <div id="head">
+            <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
+            <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+            <div id="left_tabs" >{% block left_tabs %}{% endblock %}</div>
+            <div id="right_tabs" >{% block right_tabs %}{% endblock %}</div>
+        </div>
+        <div id="subnav" class="clearfix">{% block subnav_base %}<div class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>{% endblock %}</div>
+        {% endblock header %}
+        
+        {% block body_outer %}
+        <div id="body">
+            {% if messages %}
+                <ul id="messages">
+                    {% for message in messages %}
+                    <li id="message_{{ forloop.counter }}"{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        <a href="#"><small>{% trans "clear" %}</small></a>
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            
+            {% block body %}
+            {% endblock %}
+            
+        </div>
+        {% endblock %}
+        
