@@ -26,6 +26,10 @@ else:
 
 urlpatterns = patterns("",
     url(r"^$", direct_to_template, {
+        "template": "intro.html",
+    }, name="home"),
+    
+    url(r"^home/$", direct_to_template, {
         "template": "homepage.html",
     }, name="home"),
     
@@ -48,6 +52,8 @@ urlpatterns = patterns("",
     (r"^flag/", include("flag.urls")),
     
     (r"^admin/", include(admin.site.urls)),
+
+    url(r"^get_fortune/", "fortune.views.get_fortune", name="get_fortune"),
 )
 
 
