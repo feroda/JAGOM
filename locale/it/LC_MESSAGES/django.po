@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 15:17+0200\n"
+"POT-Creation-Date: 2010-06-22 17:04+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -213,45 +213,42 @@ msgstr "Inizia <a href=\"%(login_url)s\">accedendo</a> alla rete."
 msgid "Watch introduction video"
 msgstr "Guarda il video introduttivo"
 
-#: templates/site_base.html:39
+#: templates/site_base.html:40
 msgid "Profile"
 msgstr "Profilo"
 
-#: templates/site_base.html:40
+#: templates/site_base.html:41
 msgid "Groups"
 msgstr "Gruppi"
 
-#: templates/site_base.html:42 templates/projects/project.html:41
+#: templates/site_base.html:43 templates/projects/project.html:41
 msgid "Project"
 msgstr "Progetto"
 
-#: templates/site_base.html:43
+#: templates/site_base.html:44
 msgid "Notices"
 msgstr "Notifiche"
 
-#: templates/site_base.html:50
-msgid "&copy; 2010 &lt;your company here&gt;"
-msgstr ""
-
-#: templates/site_base.html:51
+#: templates/site_base.html:53 templates/about/about.html:5
 msgid "About"
 msgstr "Informazioni"
 
-#: templates/site_base.html:52
+#: templates/site_base.html:54
 msgid "Terms of Service"
 msgstr "Termini del servizio"
 
-#: templates/site_base.html:53
+#: templates/site_base.html:55
 msgid "Privacy Policy"
 msgstr "Politica di privacy"
-
-#: templates/site_base.html:54
-msgid "DMCA Notice"
-msgstr ""
 
 #: templates/verybase.html:37
 msgid "Hide announcement"
 msgstr "Nascondi l'annuncio"
+
+#: templates/about/privacy.html:5 templates/about/terms.html:5
+#, fuzzy
+msgid "Privacy"
+msgstr "Politica di privacy"
 
 #: templates/about/what_next.html:6 templates/about/what_next.html.py:9
 #, fuzzy
