@@ -197,7 +197,7 @@ msgstr "Chiudi"
 
 #: templates/intro.html:58
 msgid "What next?"
-msgstr "Quindi che si fa?"
+msgstr "Quindi che faccio?"
 
 #: templates/intro.html:65 templates/about/what_next.html:35
 #, python-format
