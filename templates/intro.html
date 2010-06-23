@@ -11,7 +11,7 @@
             {% block extra_head %}{% endblock %}
         {% endblock %}
 
-{% block logo_link_image %}<a href="{% url home %}"><img src="http://www.jagom.org/static/logo.jpg" alt="JAGOM"/></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url intro %}"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM" width="149" /></a>{% endblock %}
     
 {% block login %}
     {% if user.is_authenticated %}
@@ -33,6 +33,11 @@
 {% endblock %}
         
 {% block body %}
+    <div class="rss-reader" id="what-are-we-doing" style="display:none;">
+        <h2>{% trans "Last activities" %} <a href="http://www.jagom.org/trac/JAGOM/timeline?milestone=on&changeset=on&ticket=on&wiki=on&max=5&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a></h2>
+        <div class="rss-reader-content" id="what-are-we-doing-content">
+        </div>
+    </div>
     <div class="table_layout center">
         <span class="appear cell_layout" id="box-fortune">Loading fortune...</span>
         <span class="cell_layout"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" /></span>
@@ -49,7 +54,7 @@
                 <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div>
-            </p><hr /><p>
+            <hr /><p>
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% url acct_login as login_url %}
@@ -63,6 +68,9 @@
                 {% endifsetting %}
             </p>
             </div>
+            <hr /><p>
+            <h2 onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').show('slow');"><a href="#" style="text-decoration:none;">{% trans "How is the project?" %}</a></h2>
+            
             </p>
         </span>
     </div>
@@ -71,6 +79,7 @@
     <p class="what_next">
         <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video'));$('.logo').fadeIn();  $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
     </p>
+
 {% endblock %}
             
 {% block footer %}
@@ -82,13 +91,48 @@
 {% block extra_body_base %}
     <script type="text/javascript">
         var timerInterval = 10000;
+        //var JAGOM_timeline_feed_url = 'http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&wiki=on&max=5&authors=&daysback=60&format=rss';
+
         function periodicalFortune() {
             $('#box-fortune').load('{% url get_fortune %}');
             setTimeout(periodicalFortune, timerInterval); 
         };
 
+        function update_rss_feed(feedUrl, feedContentElement) {
+            //Thanks to 
+            //http://visualrinse.com/2008/09/24/how-to-build-a-simple-rss-reader-with-jquery/
+            feedContentElement.empty();
+            feedContentElement.append('<center><img src="{{ STATIC_URL}}img/ajax-loader.gif" /></center>');
+            $.get('{% url feed_proxy %}', { url: feedUrl }, function(data) {
+                feedContentElement.empty();
+                $(data).find('item').each ( function () {
+                    var item = $(this);
+                    var title = item.find('title').text();
+                    var author = item.find('dc:creator').text();
+                    var pubDate = item.find('pubDate').text();
+
+                    var link = item.find('link').text();
+                    var description = item.find('description').text();
+
+                    // now create a var 'html' to store the markup we're using
+                    // to output the feed to the browser window
+                    var html = "<div class=\"entry\">";
+                    html += "<h2 class=\"postTitle\">";
+                    html += "<a href=\"" + link + "\" target=\"_blank\"> " + title + "<\/a>";
+                    html += "<\/h2>";
+                    html += "<em class=\"date\">" + pubDate + "<\/em>";
+                    html += "<p class=\"description\">" + description + "<\/p>";
+                    html += "<\/div>";
+         
+                    //put that feed content on the screen!
+                    feedContentElement.append($(html));
+                });
+            });
+        };
+            
         $('document').ready(function() {
             periodicalFortune();
+            //update_rss_feed(JAGOM_timeline_feed_url, $('#what-are-we-doing-content'));
         });
     </script>
     {% block extra_body %}{% endblock %}
