@@ -7,3 +7,38 @@
 }
 #footer { margin: auto; }
 
+.rss-reader {
+    border-bottom:1px solid lightgrey;
+    border-left:1px solid lightgrey;
+    border-right:1px solid lightgrey;
+    border-top:1px solid lightgrey;
+    font-size:0.8em;
+    max-width:34em;
+    min-width:8em;
+    text-align:left;
+    float:left;
+    position:absolute;
+    background-color: white;
+}
+
+.rss-reader > h2 {
+    background-color:#C6C400;
+    border-bottom:1px solid lightgrey;
+    margin:0;
+    padding:0 0.2em;
+}
+
+.rss-reader > h2 img {
+    float:right;
+    margin: 0.2em;
+}
+.rss-reader-content {
+    padding:0 0.5em;
+}
+
+.entry {
+}
+
+.postTitle {
+    font-size: 1.2em;
+}

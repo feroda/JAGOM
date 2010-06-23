@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-22 17:04+0200\n"
+"POT-Creation-Date: 2010-06-23 19:44+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -161,11 +161,15 @@ msgstr "o"
 msgid "Sign up"
 msgstr "Registrati"
 
-#: templates/intro.html:41
+#: templates/intro.html:37
+msgid "Last activities"
+msgstr "Ultime attività"
+
+#: templates/intro.html:46
 msgid "What is this?"
 msgstr "Di cosa si tratta?"
 
-#: templates/intro.html:43
+#: templates/intro.html:48
 msgid ""
 "\n"
 "            JAGOM is a social network and a projects forge.<p />\n"
@@ -183,19 +187,19 @@ msgstr ""
 "crescere. Queste persone sono i coltivatori.<p />\n"
 "            "
 
-#: templates/intro.html:48
+#: templates/intro.html:53
 msgid "More on our vision"
 msgstr "Altro sulla nostra visione"
 
-#: templates/intro.html:49
+#: templates/intro.html:54
 msgid "Close"
 msgstr "Chiudi"
 
-#: templates/intro.html:53
+#: templates/intro.html:58
 msgid "What next?"
 msgstr "Quindi che faccio?"
 
-#: templates/intro.html:60 templates/about/what_next.html:35
+#: templates/intro.html:65 templates/about/what_next.html:35
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
@@ -204,12 +208,16 @@ msgstr ""
 "Inizia <a href=\"%(signup_url)s\">registrandoti</a> e <a href=\"%(login_url)s"
 "\">accedendo</a> alla rete."
 
-#: templates/intro.html:62 templates/about/what_next.html:37
+#: templates/intro.html:67 templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Inizia <a href=\"%(login_url)s\">accedendo</a> alla rete."
 
 #: templates/intro.html:72
+msgid "How is the project?"
+msgstr "Come va il progetto?"
+
+#: templates/intro.html:80
 msgid "Watch introduction video"
 msgstr "Guarda il video introduttivo"
 
