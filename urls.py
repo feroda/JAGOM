@@ -54,6 +54,7 @@ urlpatterns = patterns("",
     (r"^admin/", include(admin.site.urls)),
 
     url(r"^get_fortune/", "fortune.views.get_fortune", name="get_fortune"),
+    url(r"^feed_proxy/", "feed_proxy.views.get_feed", name="feed_proxy"),
 )
 
 
