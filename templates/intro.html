@@ -34,8 +34,13 @@
         
 {% block body %}
     <div class="rss-reader" id="what-are-we-doing" style="display:none;">
-        <h2>{% trans "Last activities" %} <a href="http://www.jagom.org/trac/JAGOM/timeline?milestone=on&changeset=on&ticket=on&wiki=on&max=5&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a></h2>
+        <h2>{% trans "Last activities" %} <a href="http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&wiki=on&max=8&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a></h2>
         <div class="rss-reader-content" id="what-are-we-doing-content">
+        </div>
+    </div>
+    <div class="rss-reader" id="what-dev-are-doing" style="display:none;">
+        <h2>{% trans "Last developers activities" %} <a href="http://www.jagom.org/trac/JAGOM/timeline?changeset=on&max=10&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a></h2>
+        <div class="rss-reader-content" id="what-dev-are-doing-content">
         </div>
     </div>
     <div class="table_layout center">
@@ -108,6 +113,10 @@
                 $(data).find('item').each ( function () {
                     var item = $(this);
                     var title = item.find('title').text();
+                    //Hack
+                    if (title.indexOf('Changeset') != -1) {
+                        title = 'Modifica al programma: ' + title.substr(64);
+                    }
                     var author = item.find('dc:creator').text();
                     var pubDate = item.find('pubDate').text();
 
