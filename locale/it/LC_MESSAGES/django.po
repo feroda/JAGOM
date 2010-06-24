@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 19:03+0200\n"
+"POT-Creation-Date: 2010-06-24 19:19+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -177,8 +177,8 @@ msgid "Last developers activities"
 msgstr "Ultime attività degli sviluppatori"
 
 #: templates/intro.html:56
-msgid "I'll make it"
-msgstr "Io ce la farò"
+msgid "I'll make it!"
+msgstr "Io ce la farò!"
 
 #: templates/intro.html:63
 msgid "What is this?"
@@ -229,8 +229,8 @@ msgid ""
 "The goal of this version is to give an idea of principles JAGOM is based on, "
 "and to get attention of interested people"
 msgstr ""
-"Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si fonda "
-"e iniziare così a calamitare l'attenzione delle persone interessate"
+"Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si "
+"fonda e iniziare così a calamitare l'attenzione delle persone interessate"
 
 #: templates/intro.html:94
 msgid "Watch introduction video"

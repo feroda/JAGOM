@@ -50,10 +50,10 @@
 
     <!-- Start main content -->
     <div class="table_layout center">
-        <div class="cell_layout">
-            <p style="margin:0.5em;">
-                <video src="{{ STATIC_URL }}videos/0_IllMakeIt-{{ LANGUAGE_CODE }}.ogv" style="display:none" id="illmakeit-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
-                <a href="#" onclick="$(this).hide(); $('video#illmakeit-video').fadeIn(); document.getElementById('illmakeit-video').play();">{% trans "I'll make it" %}</a>
+        <div class="cell_layout" style="min-width: 15em;">
+            <p style="margin: 0.5em 0;">
+                <video width="200" src="{{ STATIC_URL }}videos/0_IllMakeIt-{{ LANGUAGE_CODE }}.ogv" style="display:none" id="illmakeit-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
+                <a href="#" onclick="$(this).hide(); $('video#illmakeit-video').fadeIn(); document.getElementById('illmakeit-video').play();">{% trans "I'll make it!" %}</a>
             </p>
             <p class="appear" id="box-fortune">Loading fortune...</p>
         </div>

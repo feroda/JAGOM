@@ -9,9 +9,13 @@
 
 #box-fortune {
     color: #993;
-    padding: 1em;
     text-align: left;
     max-width: 15em;
+    float:left;
+    margin:0.5em 0;
+    max-width:15em;
+    position:absolute;
+    z-index:1000;
 }
 
 #box-fortune .author {
