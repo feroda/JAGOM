@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 17:45+0200\n"
+"POT-Creation-Date: 2010-06-24 19:03+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -21,7 +21,8 @@ msgid ""
 "a short version of the name consisting only of letters, numbers, underscores "
 "and hyphens."
 msgstr ""
-"una versione breve del nome composta solo di lettere, numeri, trattini e trattini bassi."
+"una versione breve del nome composta solo di lettere, numeri, trattini e "
+"trattini bassi."
 
 #: apps/basic_groups/forms.py:18
 msgid "A group already exists with that slug."
@@ -167,20 +168,23 @@ msgstr "Registrati"
 msgid "Last activities"
 msgstr "Ultime attività"
 
-#: templates/intro.html:40 templates/intro.html.py:63
+#: templates/intro.html:40 templates/intro.html.py:71
 msgid "Close"
 msgstr "Chiudi"
 
 #: templates/intro.html:46
-#, fuzzy
 msgid "Last developers activities"
-msgstr "Ultime attività"
+msgstr "Ultime attività degli sviluppatori"
 
-#: templates/intro.html:55
+#: templates/intro.html:56
+msgid "I'll make it"
+msgstr "Io ce la farò"
+
+#: templates/intro.html:63
 msgid "What is this?"
 msgstr "Di cosa si tratta?"
 
-#: templates/intro.html:57
+#: templates/intro.html:65
 msgid ""
 "\n"
 "            JAGOM is a social network and a projects forge.<p />\n"
@@ -198,15 +202,15 @@ msgstr ""
 "crescere. Queste persone sono i coltivatori.<p />\n"
 "            "
 
-#: templates/intro.html:62
+#: templates/intro.html:70
 msgid "More on our vision"
 msgstr "Altro sulla nostra visione"
 
-#: templates/intro.html:67
+#: templates/intro.html:75
 msgid "What next?"
 msgstr "Quindi che faccio?"
 
-#: templates/intro.html:74 templates/about/what_next.html:35
+#: templates/intro.html:82 templates/about/what_next.html:35
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
@@ -215,16 +219,24 @@ msgstr ""
 "Inizia <a href=\"%(signup_url)s\">registrandoti</a> e <a href=\"%(login_url)s"
 "\">accedendo</a> alla rete."
 
-#: templates/intro.html:76 templates/about/what_next.html:37
+#: templates/intro.html:84 templates/about/what_next.html:37
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Inizia <a href=\"%(login_url)s\">accedendo</a> alla rete."
 
-#: templates/intro.html:85
+#: templates/intro.html:86
+msgid ""
+"The goal of this version is to give an idea of principles JAGOM is based on, "
+"and to get attention of interested people"
+msgstr ""
+"Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si fonda "
+"e iniziare così a calamitare l'attenzione delle persone interessate"
+
+#: templates/intro.html:94
 msgid "Watch introduction video"
 msgstr "Guarda il video introduttivo"
 
-#: templates/intro.html:88
+#: templates/intro.html:97
 msgid "Take a look at JAGOM grain growth"
 msgstr "Guarda la crescita del granello JAGOM"
 
@@ -331,8 +343,8 @@ msgid ""
 "the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href=\"%(privacy_url)s"
 "\">Privacy Policy</a>."
 msgstr ""
-"Premendo il bottone \"Registrati\", dichiari di aver letto e accettato "
-"i <a href=\"%(terms_url)s\">Termini del servizio</a> e <a href=\"%(privacy_url)s"
+"Premendo il bottone \"Registrati\", dichiari di aver letto e accettato i <a "
+"href=\"%(terms_url)s\">Termini del servizio</a> e <a href=\"%(privacy_url)s"
 "\">la politica di privacy</a>."
 
 #: templates/account/signup.html:33
@@ -438,4 +450,3 @@ msgstr ""
 
 #~ msgid "How is the<br />JAGOM grain growing?"
 #~ msgstr "Come cresce<br />il granello JAGOM?"
-

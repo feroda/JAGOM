@@ -115,7 +115,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
     
-    "pinax.core.context_processors.pinax_settings",
+    "JAGOM.context_processors.jagom_settings",
     
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
