@@ -38,14 +38,12 @@
     color: #c6c400; /* login bar link hover colour */
 }
 
-#box-fortune {
-    color: #993;
-    padding: 1em;
-    text-align: left;
-    max-width: 15em;
-}
-
-#box-fortune .author {
-    margin-top: 0.3em;
-    text-align:right;
+#subnav {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#dee450 none repeat scroll 0 0;
+    border-bottom:1px solid #99BBCC;
+    margin:0;
+    padding:0;
 }

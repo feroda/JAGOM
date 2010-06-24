@@ -7,6 +7,18 @@
 }
 #footer { margin: auto; }
 
+#box-fortune {
+    color: #993;
+    padding: 1em;
+    text-align: left;
+    max-width: 15em;
+}
+
+#box-fortune .author {
+    margin-top: 0.3em;
+    text-align:right;
+}
+
 .rss-reader {
     border-bottom:1px solid lightgrey;
     border-left:1px solid lightgrey;
@@ -28,9 +40,12 @@
     padding:0 0.2em;
 }
 
-.rss-reader > h2 img {
+a.close {
     float:right;
-    margin: 0.2em;
+    margin-top: 0.2em;
+    font-size:0.7em;
+    text-decoration:none;
+    font-weight:normal;
 }
 .rss-reader-content {
     padding:0 0.5em;
