@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 01:50+0200\n"
+"POT-Creation-Date: 2010-06-24 17:45+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -21,18 +21,19 @@ msgid ""
 "a short version of the name consisting only of letters, numbers, underscores "
 "and hyphens."
 msgstr ""
+"una versione breve del nome composta solo di lettere, numeri, trattini e trattini bassi."
 
 #: apps/basic_groups/forms.py:18
 msgid "A group already exists with that slug."
-msgstr ""
+msgstr "Esiste già un gruppo con lo stesso slug."
 
 #: apps/basic_groups/forms.py:23 apps/basic_groups/forms.py:40
 msgid "A group already exists with that name."
-msgstr ""
+msgstr "Esiste già un gruppo con lo stesso nome."
 
 #: apps/basic_groups/management.py:11
 msgid "New Group Member"
-msgstr ""
+msgstr "Nuovo membro del gruppo"
 
 #: apps/basic_groups/management.py:11
 msgid "a group you are a member of has a new member"
@@ -106,7 +107,7 @@ msgstr ""
 
 #: templates/homepage.html:30
 msgid "About this project"
-msgstr ""
+msgstr "Informazioni sul progetto"
 
 #: templates/homepage.html:33
 msgid ""
@@ -219,13 +220,13 @@ msgstr ""
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Inizia <a href=\"%(login_url)s\">accedendo</a> alla rete."
 
-#: templates/intro.html:81
-msgid "How is the<br />JAGOM grain growing?"
-msgstr "Come cresce<br />il granello JAGOM?"
-
-#: templates/intro.html:89
+#: templates/intro.html:85
 msgid "Watch introduction video"
 msgstr "Guarda il video introduttivo"
+
+#: templates/intro.html:88
+msgid "Take a look at JAGOM grain growth"
+msgstr "Guarda la crescita del granello JAGOM"
 
 #: templates/site_base.html:40
 msgid "Profile"
@@ -260,34 +261,32 @@ msgid "Hide announcement"
 msgstr "Nascondi l'annuncio"
 
 #: templates/about/privacy.html:5 templates/about/terms.html:5
-#, fuzzy
 msgid "Privacy"
 msgstr "Politica di privacy"
 
 #: templates/about/what_next.html:6 templates/about/what_next.html.py:9
-#, fuzzy
 msgid "What Next?"
 msgstr "Quindi che faccio?"
 
 #: templates/account/base.html:10
 msgid "E-Mail Addresses"
-msgstr ""
+msgstr "Indirizzi e-mail"
 
 #: templates/account/base.html:11
 msgid "OpenID Associations"
-msgstr ""
+msgstr "Associazioni OpenID"
 
 #: templates/account/base.html:13
 msgid "Change Password"
-msgstr ""
+msgstr "Cambia password"
 
 #: templates/account/base.html:15
 msgid "Set Password"
-msgstr ""
+msgstr "Imposta password"
 
 #: templates/account/base.html:18
 msgid "Delete Password"
-msgstr ""
+msgstr "Cancella password"
 
 #: templates/account/base.html:20
 msgid "Language"
@@ -295,38 +294,35 @@ msgstr "Lingua"
 
 #: templates/account/base.html:21
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso orario"
 
 #: templates/account/signup.html:6
-#, fuzzy
 msgid "Signup"
-msgstr "Registrati"
+msgstr "Registrazione"
 
 #: templates/account/signup.html:9
-#, fuzzy
 msgid "Sign Up"
 msgstr "Registrati"
 
 #: templates/account/signup.html:12
 msgid "You are already logged in."
-msgstr ""
+msgstr "Sei già entrato"
 
 #: templates/account/signup.html:14
 msgid "Already have an account?"
-msgstr ""
+msgstr "Hai già un account?"
 
 #: templates/account/signup.html:14
-#, fuzzy
 msgid "Log In"
 msgstr "Accedi"
 
 #: templates/account/signup.html:14
 msgid "return to intro"
-msgstr ""
+msgstr "ritorna all'introduzione"
 
 #: templates/account/signup.html:24
 msgid "Sign Up &raquo;"
-msgstr ""
+msgstr "Registrati &raquo;"
 
 #: templates/account/signup.html:31
 #, python-format
@@ -335,6 +331,9 @@ msgid ""
 "the <a href=\"%(terms_url)s\">Terms of Use</a> and <a href=\"%(privacy_url)s"
 "\">Privacy Policy</a>."
 msgstr ""
+"Premendo il bottone \"Registrati\", dichiari di aver letto e accettato "
+"i <a href=\"%(terms_url)s\">Termini del servizio</a> e <a href=\"%(privacy_url)s"
+"\">la politica di privacy</a>."
 
 #: templates/account/signup.html:33
 #, python-format
@@ -342,47 +341,48 @@ msgid ""
 "If you have any trouble creating your account, contact us at <a href="
 "\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 msgstr ""
+"Se hai problemi a creare l'account, contattaci all'indirizzo <a href="
+"\"mailto:%(CONTACT_EMAIL)s\">%(CONTACT_EMAIL)s</a>."
 
 #: templates/projects/project.html:23
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
 #: templates/projects/project.html:44
 msgid "Slug:"
-msgstr ""
+msgstr "Slug:"
 
 #: templates/projects/project.html:45
 msgid "Creator:"
-msgstr ""
+msgstr "Autore:"
 
 #: templates/projects/project.html:46
 msgid "Created:"
-msgstr ""
+msgstr "Creato il:"
 
 #: templates/projects/project.html:55
 msgid "Edit details"
-msgstr ""
+msgstr "Modifica dettagli"
 
 #: templates/projects/project.html:63
 msgid "updated"
-msgstr ""
+msgstr "aggiornato"
 
 #: templates/projects/project.html:78
 msgid "Add new member"
-msgstr ""
+msgstr "Aggiungi un nuovo membro"
 
 #: templates/projects/project.html:86
 msgid "add"
-msgstr ""
+msgstr "aggiongi"
 
 #: templates/projects/project.html:92
 msgid "Delete project"
-msgstr ""
+msgstr "Elimina il progetto"
 
 #: templates/projects/project.html:95
-#, fuzzy
 msgid "Delete Project"
-msgstr "Progetto"
+msgstr "Elimina il progetto"
 
 #: templates/projects/project.html:107
 msgid "Keep in touch with your grain members"
@@ -436,5 +436,6 @@ msgstr ""
 msgid "Tasks"
 msgstr ""
 
-#~ msgid "&copy; 2010 &lt;Luca Ferroni&gt;"
-#~ msgstr "&copy; 2010 &lt;Luca Ferroni&gt;"
+#~ msgid "How is the<br />JAGOM grain growing?"
+#~ msgstr "Come cresce<br />il granello JAGOM?"
+
