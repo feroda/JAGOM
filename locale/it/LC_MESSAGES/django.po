@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-24 19:19+0200\n"
+"POT-Creation-Date: 2010-06-29 01:56+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -233,12 +233,12 @@ msgstr ""
 "fonda e iniziare così a calamitare l'attenzione delle persone interessate"
 
 #: templates/intro.html:94
-msgid "Watch introduction video"
-msgstr "Guarda il video introduttivo"
-
-#: templates/intro.html:97
 msgid "Take a look at JAGOM grain growth"
 msgstr "Guarda la crescita del granello JAGOM"
+
+#: templates/intro.html:98
+msgid "Read the 0.0.9 announcement"
+msgstr "Leggi l'annuncio di rilascio della 0.0.9"
 
 #: templates/site_base.html:40
 msgid "Profile"
@@ -447,6 +447,9 @@ msgstr ""
 #: templates/projects/project.html:154
 msgid "Tasks"
 msgstr ""
+
+#~ msgid "Watch introduction video"
+#~ msgstr "Guarda il video introduttivo"
 
 #~ msgid "How is the<br />JAGOM grain growing?"
 #~ msgstr "Come cresce<br />il granello JAGOM?"
