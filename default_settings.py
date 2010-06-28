@@ -14,10 +14,6 @@ VERSION = __version__ = file(os.path.join(PROJECT_ROOT, 'VERSION')).read().strip
 PINAX_THEME = "default"
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
-# tells Pinax to serve media through the staticfiles app.
-SERVE_MEDIA = DEBUG
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -104,7 +100,7 @@ MIDDLEWARE_CLASSES = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
-ROOT_URLCONF = "JAGOM.urls"
+ROOT_URLCONF = "urls"
 
 
 TEMPLATE_CONTEXT_PROCESSORS = [
@@ -115,7 +111,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
     
-    "JAGOM.context_processors.jagom_settings",
+    "context_processors.jagom_settings",
     
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
@@ -173,8 +169,8 @@ INSTALLED_APPS = [
     "pinax.apps.tribes",
     
     # project
-    "about",
-    "basic_groups",
+    "apps.about",
+    #"apps.basic_groups",
     "fortune",
     "tracstuff",
 ]
@@ -213,7 +209,6 @@ else:
     ]
 
 EMAIL_CONFIRMATION_DAYS = 2
-EMAIL_DEBUG = DEBUG
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URLNAME = "what_next"
 

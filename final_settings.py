@@ -4,6 +4,9 @@
 import os
 from settings import *
 
+TEMPLATE_DEBUG = DEBUG
+EMAIL_DEBUG = DEBUG
+
 # Additional directories which hold static files
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "media"),

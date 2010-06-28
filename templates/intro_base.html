@@ -2,8 +2,8 @@
 {% load i18n %}
 
         {% block header %}
-        <div id="head" class="appear">
-            <div class="logo" dir="ltr" style="display:none;">{% block logo_link_image %}{% endblock %}</div>
+        <div id="head" class="appear" style="opacity:0;">
+            <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
             <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
         </div>
         {% endblock %}
