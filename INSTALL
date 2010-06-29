@@ -1,8 +1,11 @@
 exit 0
 
+Information needed to deploy JAGOM development server
+=====================================================
+
 Needs Python>=2.5
 
-aptitude install postgresql postfix postfix-pgsql sqlite python-setuptools subversion python-dev libsqlite3-dev
+aptitude install postgresql postfix postfix-pgsql sqlite python-setuptools subversion python-dev libsqlite3-dev fortune
 
 easy_install virtualenv (need version >= 1.4.7)
 

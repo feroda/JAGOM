@@ -35,6 +35,7 @@
     float:left;
     position:absolute;
     background-color: white;
+    z-index:1010;
 }
 
 .rss-reader > h2 {

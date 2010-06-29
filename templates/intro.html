@@ -91,7 +91,7 @@
     <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
     </p>
     <p class="what_next">
-        <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video')); $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
+        <a href="#" onclick="$('img#big-logo').hide().replaceWith($('video#intro-video')); $('#head').fadeTo('slow', 0.9); $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
     </p>
     <p class="what_next">
         <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').show('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
