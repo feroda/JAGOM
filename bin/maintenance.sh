@@ -5,7 +5,12 @@ if [ -z "$1" ]; then
 	exit 100
 fi
 
-. base.sh
+PROJECT_ROOT=/var/www/jagom/JAGOM
+PINAX_VENV_ROOT=/var/www/jagom/pinax_venv
+
+# NOn funziona perche' non e' in virtualenv e quindi
+# non posso importare settings.py
+#. $PROJECT_ROOT/bin/base.sh
 
 # activate virtual environment
 . $PINAX_VENV_ROOT/bin/activate
