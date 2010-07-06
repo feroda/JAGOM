@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 00:24+0200\n"
+"POT-Creation-Date: 2010-06-29 01:56+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -168,7 +168,7 @@ msgstr "Registrati"
 msgid "Last activities"
 msgstr "Ultime attività"
 
-#: templates/intro.html:40 templates/intro.html.py:71 templates/intro.html:95
+#: templates/intro.html:40 templates/intro.html.py:71
 msgid "Close"
 msgstr "Chiudi"
 
@@ -232,24 +232,11 @@ msgstr ""
 "Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si "
 "fonda e iniziare così a calamitare l'attenzione delle persone interessate"
 
-#: templates/intro.html:89
-msgid "We are looking for you"
-msgstr "Ti stiamo cercando"
-
 #: templates/intro.html:94
-#, python-format
-msgid ""
-"If you share the vision and you want to spend some time on it, ... we hope "
-"someday you'll join us! <a href=\"mailto:%(CONTACT_EMAIL)s\">Contact us</a>"
-msgstr ""
-"Se condividi la visione e ci vuoi spendere del tempo ... noi speriamo "
-"che prima o poi ti unirai a noi! <a href=\"mailto:%(CONTACT_EMAIL)s\">Contattaci</a>"
-
-#: templates/intro.html:103
 msgid "Take a look at JAGOM grain growth"
 msgstr "Guarda la crescita del granello JAGOM"
 
-#: templates/intro.html:107
+#: templates/intro.html:98
 msgid "Read the 0.0.9 announcement"
 msgstr "Leggi l'annuncio di rilascio della 0.0.9"
 
@@ -399,7 +386,7 @@ msgstr "Aggiungi un nuovo membro"
 
 #: templates/projects/project.html:86
 msgid "add"
-msgstr "aggiungi"
+msgstr "aggiongi"
 
 #: templates/projects/project.html:92
 msgid "Delete project"
