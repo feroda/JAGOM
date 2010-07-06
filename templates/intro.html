@@ -4,7 +4,7 @@
 {% load ifsetting_tag %}
 {% load openid_tags %}
 
-{% block head_title %}JAGOM is A Grain Of Mustard seed{% endblock %} 
+{% block head_title_base %}JAGOM is A Grain Of Mustard seed{% endblock %} 
         {% block extra_head_base %}
             <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
             <link rel="stylesheet" href="{{ STATIC_URL }}css/intro.css" />
@@ -71,7 +71,7 @@
                 <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div>
-            <hr /><p>
+            <hr />
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% url acct_login as login_url %}
@@ -84,6 +84,15 @@
                     {% blocktrans %}Start by <a href="{{ login_url }}">logging in</a>.{% endblocktrans %}
                 {% endifsetting %}
                 <p>{% blocktrans %}The goal of this version is to give an idea of principles JAGOM is based on, and to get attention of interested people{% endblocktrans %}</p>
+            </p>
+            </div><hr />
+            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
+
+            <div style="display:none; max-width:250px;" class="text-justify">
+            
+            <p>
+				{% blocktrans %}If you share the vision and you want to spend some time on it, ... we hope someday you'll join us! <a href="mailto:{{ CONTACT_EMAIL }}">Contact us</a>{% endblocktrans %}
+                <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div>
         </span>
