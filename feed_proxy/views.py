@@ -14,4 +14,5 @@ def get_feed(request):
             'Accept-Language' : request.META['HTTP_ACCEPT_LANGUAGE'],
     })
     resp = urllib2.urlopen(req)
-    return HttpResponse(resp.read())
+    content = resp.read()
+    return HttpResponse(content, mimetype="text/xml")
