@@ -6,3 +6,4 @@ settings.py
 deploy/apache.conf
 deploy/trac.wsgi
 deploy/django.wsgi
+log/
