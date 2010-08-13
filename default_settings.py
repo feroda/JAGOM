@@ -15,6 +15,10 @@ PINAX_THEME = "default"
 
 DEBUG = True
 
+# tells Pinax to serve media through the staticfiles app.
+SERVE_MEDIA = DEBUG
+
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -46,7 +50,7 @@ TIME_ZONE = "US/Eastern"
 # Language code for this installation. All choices can be found here:
 # http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "en-us"
 
 SITE_ID = 1
 
@@ -93,7 +97,6 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "groups.middleware.GroupAwareMiddleware",
     "pinax.apps.account.middleware.LocaleMiddleware",
-    "django.middleware.doc.XViewMiddleware",
     "pagination.middleware.PaginationMiddleware",
     "django_sorting.middleware.SortingMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
@@ -111,11 +114,13 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
     
-    "context_processors.jagom_settings",
-    
+    "staticfiles.context_processors.static_url",
+    "pinax.core.context_processors.pinax_settings",
+    "pinax.apps.account.context_processors.account",
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
-    "pinax.apps.account.context_processors.account",
+
+    "context_processors.jagom_settings",
 ]
 
 INSTALLED_APPS = [
@@ -132,17 +137,20 @@ INSTALLED_APPS = [
     
     # external
     "notification", # must be first
-    "django_openid",
-    "emailconfirmation",
+    "staticfiles",
+    "debug_toolbar",
     "mailer",
+    "uni_form",
+    "django_openid",
+    "ajax_validation",
+    "timezones",
+    "emailconfirmation",
     "announcements",
     "pagination",
+    "idios",
     "groups",
-    "timezones",
-    "ajax_validation",
     "tagging",
-    "uni_form",
-    "wiki",
+    "wakawaka",
     "avatar",
     "threadedcomments",
     "gravatar",
@@ -151,15 +159,14 @@ INSTALLED_APPS = [
     "attachments",
     "django_markup",
     "django_filters",
-    "staticfiles",
-    "debug_toolbar",
     "flag",
     "tagging_ext",
     
     # Pinax
-    "pinax.apps.basic_profiles",
+    #"pinax.apps.basic_profiles",
     "pinax.apps.account",
     "pinax.apps.signup_codes",
+    #"pinax.apps.analytics",
     "pinax.apps.tagging_utils",
     "pinax.apps.threadedcomments_extras",
     "pinax.apps.topics",
@@ -169,10 +176,15 @@ INSTALLED_APPS = [
     "pinax.apps.tribes",
     
     # project
-    "apps.about",
-    #"apps.basic_groups",
+    "about",
+    #"basic_groups",
+    "profiles",
     "fortune",
     "tracstuff",
+]
+
+FIXTURE_DIRS = [
+    os.path.join(PROJECT_ROOT, "fixtures"),
 ]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
@@ -188,9 +200,8 @@ MARKUP_CHOICES = [
     ("markdown", u"Markdown"),
     ("creole", u"Creole"),
 ]
-WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = "basic_profiles.Profile"
+AUTH_PROFILE_MODULE = "profiles.Profile"
 NOTIFICATION_LANGUAGE_MODULE = "account.Account"
 
 ACCOUNT_OPEN_SIGNUP = True
@@ -199,14 +210,9 @@ ACCOUNT_EMAIL_VERIFICATION = False
 ACCOUNT_EMAIL_AUTHENTICATION = False
 ACCOUNT_UNIQUE_EMAIL = EMAIL_CONFIRMATION_UNIQUE_EMAIL = False
 
-if ACCOUNT_EMAIL_AUTHENTICATION:
-    AUTHENTICATION_BACKENDS = [
-        "pinax.apps.account.auth_backends.EmailModelBackend",
-    ]
-else:
-    AUTHENTICATION_BACKENDS = [
-        "django.contrib.auth.backends.ModelBackend",
-    ]
+AUTHENTICATION_BACKENDS = [
+    "pinax.apps.account.auth_backends.AuthenticationBackend",
+]
 
 EMAIL_CONFIRMATION_DAYS = 2
 LOGIN_URL = "/account/login/"
