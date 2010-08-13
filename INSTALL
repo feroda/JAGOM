@@ -14,6 +14,7 @@ virtualenv --no-site-packages --clear --distribute trac_venv
 . trac_venv/bin/activate
 pip install Babel
 pip install Trac==dev
+pip install configobj
 Segui la guida di installazione di Trac
 deactivate
 

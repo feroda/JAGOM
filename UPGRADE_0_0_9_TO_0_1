@@ -1,0 +1,3 @@
+
+. trac_venv/bin/activate
+pip install configobj
