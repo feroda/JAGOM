@@ -4,14 +4,14 @@
 {% load ifsetting_tag %}
 {% load openid_tags %}
 
-{% block head_title %}JAGOM is A Grain Of Mustard seed{% endblock %} 
+{% block head_title_base %}JAGOM is A Grain Of Mustard seed{% endblock %} 
         {% block extra_head_base %}
             <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
             <link rel="stylesheet" href="{{ STATIC_URL }}css/intro.css" />
             {% block extra_head %}{% endblock %}
         {% endblock %}
 
-{% block logo_link_image %}<a href="{% url intro %}"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM" width="149" /></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url intro %}"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM" width="76" /></a>{% endblock %}
     
 {% block login %}
     {% if user.is_authenticated %}
@@ -57,7 +57,7 @@
             </p>
             <p class="appear" id="box-fortune">Loading fortune...</p>
         </div>
-        <span class="cell_layout"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM logo" id="big-logo" /></span>
+        <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn(); $('#head').fadeTo('slow',0.9); document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
             <p>
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
@@ -71,7 +71,7 @@
                 <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div>
-            <hr /><p>
+            <hr />
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% url acct_login as login_url %}
@@ -85,18 +85,27 @@
                 {% endifsetting %}
                 <p>{% blocktrans %}The goal of this version is to give an idea of principles JAGOM is based on, and to get attention of interested people{% endblocktrans %}</p>
             </p>
+            </div><hr />
+            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
+
+            <div style="display:none; max-width:250px;" class="text-justify">
+            
+            <p>
+				{% blocktrans %}If you share the vision and you want to spend some time on it, ... we hope someday you'll join us! <a href="mailto:{{ CONTACT_EMAIL }}">Contact us</a>{% endblocktrans %}
+                <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
+            </p>
             </div>
         </span>
     </div>
     <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
     </p>
     <p class="what_next">
-        <a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('#head').fadeTo('slow', 0.9); $('video#intro-video').fadeIn(); document.getElementById('intro-video').play();">{% trans "Watch introduction video" %}</a>
-    </p>
-    <p class="what_next">
         <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').show('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
         
     </p>
+	<p class="what_next">
+		<a href="http://www.befair.it/2010/06/29/annuncio-di-rilascio-jagom-0-0-9/">{% trans "Read the 0.0.9 announcement" %}</a>
+	</p>
 
 {% endblock %}
             
@@ -104,6 +113,19 @@
     <div class="legal text-center">
         JAGOM {{ VERSION }} &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">BeFair s.n.c.</a>&gt;
     </div>
+
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://base.befair.it/piwik/" : "http://base.befair.it/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://base.befair.it/piwik/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tag -->
 {% endblock %}
 
 {% block extra_body_base %}
