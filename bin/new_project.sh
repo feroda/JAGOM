@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	echo "Usage $0 <project slug> [name] [description]"
+	echo "Usage $0 <project slug> [name] [description] [base project path]"
 	exit 100
 fi
 
@@ -24,7 +24,7 @@ if [ ! -z "$2" ]; then
 fi
 
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
-PRJ_LINT_PATH=$(settings_var PRJ_LINT_PATH )
+PRJ_LINT_PATH=${4:-$(settings_var PRJ_LINT_PATH )}
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 
