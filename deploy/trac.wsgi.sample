@@ -1,0 +1,50 @@
+#!/home/fero/src/jagom/trac_venv/bin/python
+# -*- coding: utf-8 -*-
+#
+# Copyright (C)2008-2009 Edgewall Software
+# Copyright (C) 2008 Noah Kantrowitz <noah@coderanger.net>
+# All rights reserved.
+#
+# This software is licensed as described in the file COPYING, which
+# you should have received as part of this distribution. The terms
+# are also available at http://trac.edgewall.org/wiki/TracLicense.
+#
+# This software consists of voluntary contributions made by many
+# individuals. For the exact contribution history, see the revision
+# history and logs, available at http://trac.edgewall.org/log/.
+#
+# Author: Noah Kantrowitz <noah@coderanger.net>
+import os, sys
+VENV_ROOT='/home/fero/src/jagom/trac_venv'
+PYVER=2.6
+PYLIBDIR=os.path.join(VENV_ROOT, 'lib','python%s' % PYVER)
+PYSITEDIR=os.path.join(PYLIBDIR, 'site-packages')
+
+#import site
+#site.addsitedir(PYLIBDIR)
+
+sys.path = ['']
+def append_egg(arg, dirname, fnames):
+
+	for i,fname in enumerate(fnames):
+		if fname.endswith(".egg"):
+			sys.path.append(os.path.join(dirname,fname))
+		del fnames[i]
+
+os.path.walk(PYSITEDIR, append_egg, None)
+
+SYSPYLIBDIR = os.path.join('/usr','lib','python%s' % PYVER)
+j = os.path.join
+sys.path += [ PYLIBDIR, PYSITEDIR, j(PYLIBDIR, 'lib-dynload'), SYSPYLIBDIR, j(SYSPYLIBDIR, 'site-packages')  ]
+
+#OLD in sys.path: Might be useful if something breaks in loading wsgi...
+#VENV_ROOT + '/lib/python2.5/plat-linux2', VENV_ROOT + '/lib/python2.5/lib-tk', '/usr/lib/python2.5/lib-tk', '/usr/local/lib/python2.5/site-packages', '/var/lib/python-support/python2.5']
+
+def application(environ, start_request):
+    
+    os.environ['TRAC_ENV_PARENT_DIR'] = os.path.join(VENV_ROOT, 'tracs')
+    os.environ.setdefault('trac.env_path_parent_dir', os.environ['TRAC_ENV_PARENT_DIR'])
+    os.environ['PYTHON_EGG_CACHE'] = os.path.join(os.environ['trac.env_path_parent_dir'], '.egg-cache')
+
+    from trac.web.main import dispatch_request
+    return dispatch_request(environ, start_request)

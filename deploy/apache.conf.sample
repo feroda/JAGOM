@@ -1,0 +1,52 @@
+<VirtualHost *:80>
+
+  ServerAdmin webmaster@jagom.org
+  ServerName localhost
+  DocumentRoot /home/fero/src/jagom
+
+	#Alias /robots.txt /home/fero/src/jagom/JAGOM/media/robots.txt
+	#Alias /favicon.ico /home/fero/src/jagom/JAGOM/media/favicon.ico
+	#
+	#AliasMatch /([^/]*\.css) /home/fero/src/jagom/JAGOM/media/css/$1
+	
+	Alias /site_media/ /home/fero/src/jagom/JAGOM/site_media/
+	
+	<Directory /home/fero/src/jagom/JAGOM/site_media>
+		Order deny,allow
+		Allow from all
+	</Directory>
+	
+WSGIDaemonProcess 	www.jagom.org processes=2 threads=20 maximum-requests=500
+WSGIProcessGroup	www.jagom.org
+WSGIScriptAlias /trac /home/fero/src/jagom/JAGOM/deploy/trac.wsgi
+
+<Directory /home/fero/src/jagom/trac_venv/cgi-bin/>
+    WSGIApplicationGroup %{GLOBAL}
+    Order deny,allow
+    Allow from all
+</Directory>
+
+<Directory /home/fero/src/jagom/trac_venv/tracs/>
+	AllowOverride AuthConfig
+</Directory>
+
+<Location /trac/prova/login>
+	AuthType Basic
+	AuthName "Ambiente di prova"
+	AuthUserFile /home/fero/src/jagom/trac_venv/tracs/prova/.htpasswd
+	Require valid-user
+#        AllowOverride All
+#        Order allow,deny
+#        allow from all
+</Location>
+
+# Django specific settings
+
+#	WSGIScriptAlias / /home/fero/src/jagom/JAGOM/deploy/django.wsgi
+#
+#	<Directory /home/fero/src/jagom/JAGOM/deploy>
+#		Order allow,deny
+#		Allow from all
+#	</Directory>
+
+</VirtualHost>
