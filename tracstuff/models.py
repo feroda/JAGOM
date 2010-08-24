@@ -5,6 +5,8 @@ from pinax.apps.projects.models import Project
 import subprocess, os
 
 env = os.environ
+lang = 'latin-1'
+
 def activate_trac_env(sender, **kwargs):
 
     env['JAGOM_HOME'] = settings.PROJECT_ROOT
@@ -13,13 +15,13 @@ def activate_trac_env(sender, **kwargs):
     if kwargs['created']:
         subprocess.Popen([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
-            prj.slug, prj.name, prj.description
+            prj.slug.encode(lang), prj.name.encode(lang), prj.description.encode(lang) 
         ], env=env)
 
     else:
         subprocess.Popen([
             settings.UPDATE_PRJ_ENV_SCRIPT,
-            prj.slug, prj.name, prj.description
+            prj.slug.encode(lang), prj.name.encode(lang), prj.description.encode(lang) 
         ], env=env)
 
     #TODO: Check for errors
