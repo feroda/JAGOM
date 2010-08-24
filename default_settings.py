@@ -177,7 +177,7 @@ INSTALLED_APPS = [
     
     # project
     "about",
-    #"basic_groups",
+    "basic_groups",
     "profiles",
     "fortune",
     "tracstuff",
@@ -221,6 +221,11 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
+
+LANGUAGES = [
+    ("en", u"English"),
+    ("it", u"Italiano"),
+]
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

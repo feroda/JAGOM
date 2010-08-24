@@ -9,22 +9,36 @@
     <h1>{% trans "What Next?" %}</h1>
     
     {% if user.is_authenticated %}
-        <p>Here are some things to do to get started with this site:</p>
+        <p>{% trans "Here are some things to do to get started with this site:" %}</p>
         
         <dl class="what_next">
-            <dt><a href="{% url acct_email %}">verify an email address</a></dt>
-            <dd>so you can receive notifications, reset your password and so people can find you more easily.</dd>
+            {# TODO: improve performance #}
+            {% for emailaddress in user.emailaddress_set.all %}
+                {% if emailaddress.verified %}
+                {% else %}
+                    {% if forloop.last %}
+                        <dt><a href="{% url acct_email %}">{% trans "verify an email address" %}</a></dt>
+                        <dd>{% trans "so you can receive notifications, reset your password and so people can find you more easily." %}</dd>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
             
-            <dt><a href="{% url profile_detail user.username %}">fill out your profile</a></dt>
-            <dd>to tell the world a little about yourself.</dd>
+            {% if not user.get_profile.name %}
+            <dt><a href="{% url profile_detail user.username %}">{% trans "fill out your profile" %}</a></dt>
+            <dd>{% trans "to tell the world a little about yourself." %}</dd>
+            {% endif %}
             
             {% ifsetting ACCOUNT_OPEN_SIGNUP %}
             {% else %}
                 {% if user.is_staff %}
-                    <dt><a href="{% url admin_invite_user %}">invite more people to the site</a> [admin only]</dt>
-                    <dd>so more people can share in the fun.</dd>
+                    <dt><a href="{% url admin_invite_user %}">{% trans "invite more people to the site" %}</a> {% trans "[admin only]" %}</dt>
+                    <dd>{% trans "so more people can share in the fun." %}</dd>
                 {% endif %}
             {% endifsetting %}
+
+            <dt><a href="{% url your_projects %}">{% trans "seed your grains" %}</a></dt>
+            <dd>{% trans "so you can make them grow and begin to keep track of your work." %}</dd>
+
         </dl>
         {% else %}
             {% url acct_login as login_url %}
