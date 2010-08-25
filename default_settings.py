@@ -173,7 +173,7 @@ INSTALLED_APPS = [
     "pinax.apps.tasks",
     "pinax.apps.photos",
     "pinax.apps.projects",
-    "pinax.apps.tribes",
+    #"pinax.apps.tribes",
     
     # project
     "about",

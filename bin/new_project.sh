@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	echo "Usage $0 <project slug> [name] [description] [base project path]"
+	echo "Usage $0 <project slug> <language code> [name] [description] [base project path]"
 	exit 100
 fi
 
@@ -17,14 +17,22 @@ function settings_var {
 
 PRJ="$1"
 if [ ! -z "$2" ]; then
-    NAME="$2"
-    if [ ! -z "$3" ]; then
-        DESCRIPTION="$3"
+    LANGUAGE="$2"
+else
+    echo "Error: You MUST specify language code (available it,en)"
+    exit 102
+fi
+
+if [ ! -z "$3" ]; then
+    NAME="$3"
+    if [ ! -z "$4" ]; then
+        DESCRIPTION="$4"
     fi
 fi
 
+PRJ_ENV_ROOT=$(settings_var PRJ_ENV_ROOT )
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
-PRJ_LINT_PATH=${4:-$(settings_var PRJ_LINT_PATH )}
+PRJ_LINT_PATH=${5:-"$(settings_var PRJ_LINT_PATH )-$LANGUAGE"}
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 
@@ -48,4 +56,14 @@ chmod -R u+w $PRJ_ROOT
 for f in VERSION README; do
 	chmod u-w $PRJ_ROOT/$f
 done
+
+# Activate projects virtualenv and perform trac-admin upgrade
+deactivate
+cd $PRJ_ENV_ROOT
+. bin/activate
+trac-admin $PRJ_ROOT upgrade
+
+
+
+
 

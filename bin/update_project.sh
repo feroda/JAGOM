@@ -23,6 +23,7 @@ if [ ! -z "$2" ]; then
     fi
 fi
 
+PRJ_ENV_ROOT=$(settings_var PRJ_ENV_ROOT )
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
 PRJ_LINT_PATH=$(settings_var PRJ_LINT_PATH )
 PRJ_ROOT="$PRJ_ENVS_PATH/$PRJ"
@@ -47,3 +48,8 @@ for f in VERSION README; do
 	chmod u-w $PRJ_ROOT/$f
 done
 
+# Activate projects virtualenv and perform trac-admin upgrade
+deactivate
+cd $PRJ_ENV_ROOT
+. bin/activate
+trac-admin $PRJ_ROOT upgrade

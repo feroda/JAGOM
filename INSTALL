@@ -18,6 +18,10 @@ pip install configobj Pygments
 Segui la guida di installazione di Trac
 deactivate
 
+# Web server should have write permissions to trac environments
+chgrp www-data trac_venv/tracs
+chmod g+w trac_venv/tracs
+
 virtualenv --no-site-packages --clear --distribute pinax_venv
 
 . pinax_venv/bin/activate
@@ -28,5 +32,4 @@ pinax-admin setup_project -b sample_group JAGOM
 cd JAGOM
 python manage.py syncdb
 python manage.py runserver
-
 
