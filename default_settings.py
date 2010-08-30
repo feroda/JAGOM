@@ -176,6 +176,8 @@ INSTALLED_APPS = [
     #"pinax.apps.tribes",
     
     # project
+    "base",
+    "projects_tree",
     "about",
     "basic_groups",
     "profiles",

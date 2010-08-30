@@ -27,6 +27,9 @@ urlpatterns = patterns("",
         "template": "homepage.html",
     }, name="home"),
     
+    url(r"^projects/project/(?P<group_slug>[-\w]+)/delete-member/(?P<member_id>[-\w]+)/$", "projects_tree.views.delete_member", name="delete_member_from_project"),
+    url(r"^get_messages/$", "base.views.get_messages", name="get_messages"),
+
     url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^about/", include("about.urls")),

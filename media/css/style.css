@@ -47,3 +47,8 @@
     margin:0;
     padding:0;
 }
+
+.delete-icon {
+    float:right;
+    margin-left:0;
+}

@@ -25,6 +25,29 @@
                     {% for member in project.members.all %}
                         {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
                         <td>
+                            <div class="avatar">
+                            {% ifequal user project.creator %}
+                                {% ifnotequal member.user project.creator %}
+                            <div class="delete-icon" id="dm-{{ member.id }}"><a href="#" onclick="$.get('{% url delete_member_from_project group_slug=project.slug,member_id=member.id %}', function() { $('#dm-{{ member.id }}').parents('td').fadeOut(); $.get('{% url get_messages %}', function(data) { $('#messages').append(data); }); }); return false;">{% silk "delete" %}</a></div>
+                                {% endifnotequal %}
+                            {% endifequal %}
+            
+                                {% avatar member.user 40 %}
+                            </div>
+                            <div class="details"><a href="{% url profile_detail member.user.username %}" title="{% user_display member.user %}">{% user_display member.user %}</a></div>
+                        </td>
+                        {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
+                    {% endfor %}
+                    {% if project.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
+                </table>
+            </div>
+            {% comment %} #TODO: TO BE DONE
+            <div class="members">
+                <h2>{% trans "Inherited from..." %}</h2>
+                <table width="100%">
+                    {% for member in project.parents.all %}
+                        {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
+                        <td>
                             <div class="avatar">{% avatar member.user 40 %}</div>
                             <div class="details"><a href="{% url profile_detail member.user.username %}" title="{% user_display member.user %}">{% user_display member.user %}</a></div>
                         </td>
@@ -33,6 +56,7 @@
                     {% if project.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
                 </table>
             </div>
+            {% endcomment %}
         </div>
     {% endif %}
     
@@ -104,6 +128,7 @@
         {% endif %}
         
         {% if user.is_authenticated %}
+        {% comment %}
             <h2>{% trans "Keep in touch with your grain members" %}</h2>
             <p>{% blocktrans %}JAGOM has setup those mailing-list in order to help you to keep in touch with your active members or simply people who are interested in your project{% endblocktrans %}
                 <ul>
@@ -112,6 +137,7 @@
                     <li><a href="mailto:">chicitiene@{{ project.slug }}.g.jagom.org</a></li>
                 </ul>
             </p>
+        {% endcomment %}
             <h2>{% trans "Let your grain grow!" %}</h2>
             <p>
                 {% trans "Go to" %} <a href="{{ PRJS_URL }}{{ project.slug }}">{% trans "the project management page" %}</a>
