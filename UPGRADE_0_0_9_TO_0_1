@@ -1,3 +1,7 @@
 
 . trac_venv/bin/activate
 pip install configobj
+
+# Update trac.ini with inherit ../../etc/trac.ini
+
+# Resync pinax db

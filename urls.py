@@ -14,7 +14,6 @@ from pinax.apps.tasks.models import Task
 from pinax.apps.topics.models import Topic
 
 
-
 handler500 = "pinax.views.server_error"
 
 
@@ -27,7 +26,10 @@ urlpatterns = patterns("",
         "template": "homepage.html",
     }, name="home"),
     
-    url(r"^projects/project/(?P<group_slug>[-\w]+)/delete-member/(?P<member_id>[-\w]+)/$", "projects_tree.views.delete_member", name="delete_member_from_project"),
+    #JAGOM specific views
+    url(r"^projects/", include("projects_tree.urls")),
+    
+    #Views useful for pinax developers (sent patch to them)
     url(r"^get_messages/$", "base.views.get_messages", name="get_messages"),
 
     url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
@@ -43,7 +45,6 @@ urlpatterns = patterns("",
     url(r"^attachments/", include("attachments.urls")),
     url(r"^groups/", include("basic_groups.urls")),
     url(r"^tribes/", include("pinax.apps.tribes.urls")),
-    url(r"^projects/", include("pinax.apps.projects.urls")),
     url(r"^flag/", include("flag.urls")),
 
     #WAS 0.9.dev12: url(r"^account/signup/$", signup_view, name="acct_signup"),

@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from groups.base import Group
 
 
-
 class BasicGroup(Group):
     
     members = models.ManyToManyField(User,

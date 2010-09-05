@@ -60,7 +60,7 @@
         <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn(); $('#head').fadeTo('slow',0.9); document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
             <p>
-            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% blocktrans %}
             JAGOM is a social network and a projects forge.<p />
@@ -72,7 +72,7 @@
             </p>
             </div>
             <hr />
-            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% url acct_login as login_url %}
             
@@ -86,7 +86,7 @@
                 <p>{% blocktrans %}The goal of this version is to give an idea of principles JAGOM is based on, and to get attention of interested people{% endblocktrans %}</p>
             </p>
             </div><hr />
-            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
 
             <div style="display:none; max-width:250px;" class="text-justify">
             
@@ -100,7 +100,7 @@
     <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
     </p>
     <p class="what_next">
-        <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').show('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
+        <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').toggle('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
         
     </p>
 	<p class="what_next">

@@ -386,7 +386,7 @@ msgstr "Aggiungi un nuovo membro"
 
 #: templates/projects/project.html:86
 msgid "add"
-msgstr "aggiongi"
+msgstr "aggiungi"
 
 #: templates/projects/project.html:92
 msgid "Delete project"

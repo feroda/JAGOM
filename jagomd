@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PPATH="/home/fero/src/jagom/JAGOM"
+
+if [ "$1" ]; then
+	python manage.py $1 --pythonpath=$PPATH $2
+else
+	echo "Usage: $0 <action> [options]"
+fi
+
