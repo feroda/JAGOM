@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	echo "Usage $0 <project slug> <language code> [name] [description] [base project path]"
+	echo "Usage $0 <project slug> <admin username> <language code> [name] [description] [base project path]"
 	exit 100
 fi
 
@@ -17,16 +17,22 @@ function settings_var {
 
 PRJ="$1"
 if [ ! -z "$2" ]; then
-    LANGUAGE="$2"
+    ADMIN="$2"
 else
-    echo "Error: You MUST specify language code (available it,en)"
+    echo "Error: you MUST specify admin username"
+    exit 102
+
+if [ ! -z "$3" ]; then
+    LANGUAGE="$3"
+else
+    echo "Error: you MUST specify language code (available it,en)"
     exit 102
 fi
 
-if [ ! -z "$3" ]; then
-    NAME="$3"
-    if [ ! -z "$4" ]; then
-        DESCRIPTION="$4"
+if [ ! -z "$4" ]; then
+    NAME="$4"
+    if [ ! -z "$5" ]; then
+        DESCRIPTION="$5"
     fi
 fi
 
@@ -58,12 +64,8 @@ for f in VERSION README; do
 done
 
 # Activate projects virtualenv and perform trac-admin upgrade
-deactivate
 cd $PRJ_ENV_ROOT
 . bin/activate
 trac-admin $PRJ_ROOT upgrade
-
-
-
-
+trac-admin $PRJ_ROOT permission add $ADMIN TRAC_ADMIN
 

@@ -24,7 +24,7 @@ def activate_trac_env(sender, **kwargs):
     if kwargs['created']:
         subprocess.Popen([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
-            slug, language_code, name, description
+            slug, prj.creator, language_code, name, description
         ], env=env)
 
     else:
