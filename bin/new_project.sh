@@ -62,3 +62,7 @@ cd $PRJ_ENV_ROOT
 trac-admin $PRJ_ROOT upgrade
 trac-admin $PRJ_ROOT permission add $ADMIN TRAC_ADMIN
 
+# TODO FIXME: we should also
+# remove all wiki/Private* pages
+# remove all tickets comments
+
