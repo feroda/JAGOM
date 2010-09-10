@@ -14,6 +14,8 @@ class ProjectTreeForm(ProjectForm):
     parent = forms.ChoiceField() #, widget=forms.widgets.RadioSelect)
     member_groups = forms.MultipleChoiceField(widget=forms.widgets.CheckboxSelectMultiple, required=False)
 
+    open_updates = forms.BooleanField(required=False)
+
     def __init__(self, *args, **kw):
         super(ProjectTreeForm, self).__init__(*args, **kw)
         self.fields["parent"].choices = map(lambda x: (x.pk, x.name), Project.objects.filter(profile__is_clonable=True))

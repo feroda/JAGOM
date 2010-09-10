@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-from projects_tree.models import ProjectProfile
+from projects_tree.models import ProjectProfile, ProjectTree
 import subprocess, os, sys
 
 env = os.environ
@@ -18,7 +18,10 @@ def activate_trac_env(sender, **kwargs):
     description = prj.description.encode(encoding) 
 
     if kwargs['created']:
-        parent = prj.relations.parent.slug
+        try:
+            parent = prj.relations.parent.slug
+        except ProjectTree.DoesNotExist:
+            raise
         subprocess.Popen([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
             slug, prj.creator.username, name, description, parent

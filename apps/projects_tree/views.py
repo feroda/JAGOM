@@ -40,7 +40,11 @@ def create(request, form_class=ProjectTreeForm, template_name="projects/create.h
 
         # Save xattr: after saving project relations
         language = project_form.cleaned_data['language']
-        project_profile = ProjectProfile(project=project, language=language)
+        open_updates = project_form.cleaned_data['open_updates']
+        project_profile = ProjectProfile(project=project, 
+                            language=language, 
+                            open_updates=open_updates
+                          )
         project_profile.save()
 
         if notification:

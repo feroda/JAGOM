@@ -7,6 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 class ProjectTree(models.Model):
+    """
+    Project connections
+    """
 
     project = models.OneToOneField(Project,
         related_name = "relations",
@@ -26,7 +29,9 @@ class ProjectTree(models.Model):
         unique_together = [("parent", "project")]
 
 class ProjectProfile(models.Model):
-
+    """
+    Extend project attributes
+    """
 
     project = models.OneToOneField(Project,
         related_name = "profile",
@@ -36,4 +41,6 @@ class ProjectProfile(models.Model):
 
     is_clonable = models.BooleanField(default=False)
     language = models.CharField(max_length=32, choices=settings.LANGUAGES)
+    open_updates = models.BooleanField(default=True, 
+                   help_text=_("Let each user able to update project notes and manage tickets"))
 

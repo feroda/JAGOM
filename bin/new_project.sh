@@ -21,6 +21,7 @@ if [ ! -z "$2" ]; then
 else
     echo "Error: you MUST specify admin username"
     exit 102
+fi
 
 if [ ! -z "$3" ]; then
     NAME="$3"
@@ -34,10 +35,16 @@ PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
 PRJ_LINT_PATH=${4:-"$(settings_var PRJ_LINT_PATH )"}
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
+PRJ_ROOT_AUTH_FILE=$PRJ_ROOT/conf/authzpolicy.conf
 
 if [ ! -d "$PRJS_ENVS_PATH" ]; then
     echo "Error: directory $PRJS_ENVS_PATH does not exist"
     exit 102
+fi
+
+if [ -d "$PRJ_ROOT" ]; then
+    #Project already exists
+    exit 1
 fi
 
 cp -a $PRJ_LINT_PATH $PRJ_ROOT
@@ -49,6 +56,9 @@ if [ "$NAME" ]; then
         sed -i "s/^descr\ =.*/descr = $DESCRIPTION/g" $PRJ_ROOT_CONF_FILE
     fi
 fi
+
+# Update administrators list
+sed -i "s/^administrators = .*/administrators = $ADMIN/g" $PRJ_ROOT_AUTH_FILE
 
 chmod -R u+w $PRJ_ROOT
 
