@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-	echo "Usage $0 <project slug> <admin username> <language code> [name] [description] [base project path]"
+	echo "Usage $0 <project slug> <admin username> [name] [description] [base project path]"
 	exit 100
 fi
 
@@ -23,22 +23,15 @@ else
     exit 102
 
 if [ ! -z "$3" ]; then
-    LANGUAGE="$3"
-else
-    echo "Error: you MUST specify language code (available it,en)"
-    exit 102
-fi
-
-if [ ! -z "$4" ]; then
-    NAME="$4"
-    if [ ! -z "$5" ]; then
-        DESCRIPTION="$5"
+    NAME="$3"
+    if [ ! -z "$4" ]; then
+        DESCRIPTION="$4"
     fi
 fi
 
 PRJ_ENV_ROOT=$(settings_var PRJ_ENV_ROOT )
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
-PRJ_LINT_PATH=${5:-"$(settings_var PRJ_LINT_PATH )-$LANGUAGE"}
+PRJ_LINT_PATH=${4:-"$(settings_var PRJ_LINT_PATH )"}
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 

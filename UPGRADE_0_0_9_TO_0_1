@@ -4,4 +4,10 @@ pip install configobj
 
 # Update trac.ini with inherit ../../etc/trac.ini
 
-# Resync pinax db
+deactivate
+. pinax_venv/bin/activate 
+cd JAGOM
+
+# Resync pinax db and update fixtures
+./jagomd runserver
+

@@ -4,11 +4,14 @@ from pinax.apps.projects.models import Project
 from basic_groups.models import BasicGroup
 from django.utils.translation import ugettext_lazy as _
 
+from django.conf import settings
+
 class ProjectTree(models.Model):
 
     project = models.OneToOneField(Project,
         related_name = "relations",
-        verbose_name = _("project")
+        verbose_name = _("project"),
+        null=False
     )
     parent = models.ForeignKey(Project,
         related_name = "children",
@@ -21,3 +24,16 @@ class ProjectTree(models.Model):
     
     class Meta:
         unique_together = [("parent", "project")]
+
+class ProjectProfile(models.Model):
+
+
+    project = models.OneToOneField(Project,
+        related_name = "profile",
+        verbose_name = _("project"),
+        null=False
+    )
+
+    is_clonable = models.BooleanField(default=False)
+    language = models.CharField(max_length=32, choices=settings.LANGUAGES)
+

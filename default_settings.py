@@ -225,8 +225,8 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 LANGUAGES = [
-    ("en", u"English"),
     ("it", u"Italiano"),
+    ("en", u"English"),
 ]
 
 # local_settings.py can be used to override environment-specific settings

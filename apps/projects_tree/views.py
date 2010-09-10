@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from pinax.apps.projects.models import Project, ProjectMember
 from pinax.apps.projects.views import create as pinax_project_create
 from projects_tree.forms import ProjectTreeForm
-from projects_tree.models import ProjectTree
+from projects_tree.models import ProjectTree, ProjectProfile
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -29,13 +29,20 @@ def create(request, form_class=ProjectTreeForm, template_name="projects/create.h
         project_member = ProjectMember(project=project, user=request.user)
         project.members.add(project_member)
         project_member.save()
+
         # Save parent and members group
         parent = project_form.cleaned_data['parent']
-        member_groups = project_form.cleaned_data['member_groups']
         project_tree = ProjectTree(project=project, parent=parent)
         project_tree.save()
+        member_groups = project_form.cleaned_data['member_groups']
         for g in member_groups:
             project_tree.member_groups.add(g)
+
+        # Save xattr: after saving project relations
+        language = project_form.cleaned_data['language']
+        project_profile = ProjectProfile(project=project, language=language)
+        project_profile.save()
+
         if notification:
             # @@@ might be worth having a shortcut for sending to all users
             notification.send(User.objects.all(), "projects_new_project",
