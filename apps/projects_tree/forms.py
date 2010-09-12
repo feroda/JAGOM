@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from pinax.apps.projects.forms import ProjectForm
 from projects_tree.models import ProjectTree
 from pinax.apps.projects.models import Project
@@ -10,20 +11,19 @@ class ProjectTreeForm(ProjectForm):
 
     language = forms.ChoiceField(choices=settings.LANGUAGES)
 
-    #TODO: parent should have a "autocomplete search widget if clicked"
-    parent = forms.ChoiceField() #, widget=forms.widgets.RadioSelect)
-    member_groups = forms.MultipleChoiceField(widget=forms.widgets.CheckboxSelectMultiple, required=False)
+#    member_groups = forms.MultipleChoiceField(widget=forms.widgets.CheckboxSelectMultiple, required=False)
 
-    open_updates = forms.BooleanField(required=False)
+    open_updates = forms.BooleanField(required=False, initial=False,
+                   help_text=_("Make each JAGOM user able to update project notes and manage tickets")
+    )
 
     def __init__(self, *args, **kw):
         super(ProjectTreeForm, self).__init__(*args, **kw)
-        self.fields["parent"].choices = map(lambda x: (x.pk, x.name), Project.objects.filter(profile__is_clonable=True))
-        self.fields["member_groups"].choices = map(lambda x: (x.pk, x.name), Group.objects.all()) 
+#        self.fields["member_groups"].choices = map(lambda x: (x.pk, x.name), Group.objects.all()) 
         self.fields["language"].initial=settings.LANGUAGES[0][0]
 
     def clean_parent(self):
         return Project.objects.get(pk=int(self.data["parent"]))
 
-    def clean_member_groups(self):
-        return map(lambda pk: Group.objects.get(pk=int(pk)), self.data.get("member_groups",[]))
+#    def clean_member_groups(self):
+#        return map(lambda pk: Group.objects.get(pk=int(pk)), self.data.get("member_groups",[]))

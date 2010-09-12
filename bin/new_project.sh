@@ -32,7 +32,7 @@ fi
 
 PRJ_ENV_ROOT=$(settings_var PRJ_ENV_ROOT )
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
-PRJ_LINT_PATH=${4:-"$(settings_var PRJ_LINT_PATH )"}
+PRJ_LINT_PATH=${4:-$(settings_var PRJ_LINT_PATH )}
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
 PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
 PRJ_ROOT_AUTH_FILE=$PRJ_ROOT/conf/authzpolicy.conf

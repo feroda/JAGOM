@@ -19,12 +19,12 @@ def activate_trac_env(sender, **kwargs):
 
     if kwargs['created']:
         try:
-            parent = prj.relations.parent.slug
+            parent_slug = prj.relations.parent.slug
         except ProjectTree.DoesNotExist:
             raise
         subprocess.Popen([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
-            slug, prj.creator.username, name, description, parent
+            slug, prj.creator.username, name, description, parent_slug
         ], env=env)
 
     else:

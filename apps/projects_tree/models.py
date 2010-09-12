@@ -42,5 +42,5 @@ class ProjectProfile(models.Model):
     is_clonable = models.BooleanField(default=False)
     language = models.CharField(max_length=32, choices=settings.LANGUAGES)
     open_updates = models.BooleanField(default=True, 
-                   help_text=_("Let each user able to update project notes and manage tickets"))
+                   help_text=_("Make each JAGOM user able to update project notes and manage tickets"))
 

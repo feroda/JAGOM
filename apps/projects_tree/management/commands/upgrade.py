@@ -29,8 +29,9 @@ class Command(NoArgsCommand):
 
     def handle(self, *args, **kw):
         try:
-            default_parent = Project.objects.get(slug="000-LINTENV-it")
+            default_parent = Project.objects.get(slug=settings.PRJ_LINT_SLUG)
         except Project.DoesNotExist:
+            # Older versions named 000-LINTENV to mean 000-LINTENV-it
             default_parent = Project.objects.get(slug="000-LINTENV")
             default_parent.slug = "000-LINTENV-it"
             default_parent.save()
@@ -39,7 +40,6 @@ class Command(NoArgsCommand):
             try:
                 assert p.relations
             except ProjectTree.DoesNotExist:
-
                 #Set base project (default is italian language)
                 
                 project_tree = ProjectTree(project=p, parent=default_parent)

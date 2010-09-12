@@ -13,6 +13,8 @@ from pinax.apps.projects.views import create as pinax_project_create
 from projects_tree.forms import ProjectTreeForm
 from projects_tree.models import ProjectTree, ProjectProfile
 
+from projects_tree import get_base_project_for_language
+
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -30,17 +32,20 @@ def create(request, form_class=ProjectTreeForm, template_name="projects/create.h
         project.members.add(project_member)
         project_member.save()
 
-        # Save parent and members group
-        parent = project_form.cleaned_data['parent']
-        project_tree = ProjectTree(project=project, parent=parent)
-        project_tree.save()
-        member_groups = project_form.cleaned_data['member_groups']
-        for g in member_groups:
-            project_tree.member_groups.add(g)
-
-        # Save xattr: after saving project relations
         language = project_form.cleaned_data['language']
         open_updates = project_form.cleaned_data['open_updates']
+
+        # Save parent and members group
+        parent = project_form.cleaned_data.get('parent', 
+                    get_base_project_for_language(language)
+        )
+        project_tree = ProjectTree(project=project, parent=parent)
+        project_tree.save()
+#        member_groups = project_form.cleaned_data['member_groups']
+#        for g in member_groups:
+#            project_tree.member_groups.add(g)
+
+        # Save xattr: after saving project relations
         project_profile = ProjectProfile(project=project, 
                             language=language, 
                             open_updates=open_updates
