@@ -8,7 +8,10 @@ import pinax
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-VERSION = __version__ = file(os.path.join(PROJECT_ROOT, 'VERSION')).read().strip()
+VERSION = file(os.path.join(PROJECT_ROOT, 'VERSION')).read().strip().split('.')
+VERSION[0] = int(VERSION[0])
+VERSION[1] = int(VERSION[1])
+VERSION = __version__ = tuple(VERSION)
 
 # tells Pinax to use the default theme
 PINAX_THEME = "default"

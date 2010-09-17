@@ -28,26 +28,28 @@ class Command(NoArgsCommand):
     help = "Performs sanity check and upgrade"
 
     def handle(self, *args, **kw):
-        try:
-            default_parent = Project.objects.get(slug=settings.PRJ_LINT_SLUG)
-        except Project.DoesNotExist:
-            # Older versions named 000-LINTENV to mean 000-LINTENV-it
-            default_parent = Project.objects.get(slug="000-LINTENV")
-            default_parent.slug = "000-LINTENV-it"
-            default_parent.save()
 
-        for p in Project.objects.all():
+        if settings.VERSION[:1] == (0,1):
             try:
-                assert p.relations
-            except ProjectTree.DoesNotExist:
-                #Set base project (default is italian language)
-                
-                project_tree = ProjectTree(project=p, parent=default_parent)
-                project_tree.save()
+                default_parent = Project.objects.get(slug=settings.PRJ_LINT_SLUG)
+            except Project.DoesNotExist:
+                # Older versions named 000-LINTENV to mean 000-LINTENV-it
+                default_parent = Project.objects.get(slug="000-LINTENV")
+                default_parent.slug = "000-LINTENV-it"
+                default_parent.save()
 
-            try:
-                assert p.profile
-            except ProjectProfile.DoesNotExist:
-                project_profile = ProjectProfile(project=p, language="it")
-                project_profile.save()
+            for p in Project.objects.all():
+                try:
+                    assert p.relations
+                except ProjectTree.DoesNotExist:
+                    #Set base project (default is italian language)
+                    
+                    project_tree = ProjectTree(project=p, parent=default_parent)
+                    project_tree.save()
+
+                try:
+                    assert p.profile
+                except ProjectProfile.DoesNotExist:
+                    project_profile = ProjectProfile(project=p, language="it")
+                    project_profile.save()
 

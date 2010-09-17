@@ -9,5 +9,6 @@ deactivate
 cd JAGOM
 
 # Resync pinax db and update fixtures
+./jagomd upgrade
 ./jagomd runserver
 
