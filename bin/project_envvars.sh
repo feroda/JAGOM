@@ -1,3 +1,6 @@
+#!/bin/bash
+
+# Common variables for project environments
 
 if [ -z "$JAGOM_HOME" ]; then
     echo "Error: JAGOM_HOME is not set, cannot continue"
@@ -9,12 +12,10 @@ function settings_var {
   (cd $JAGOM_HOME; (echo "from settings import $name"; echo "print $name" ) |python )
 }
 
-export PINAX_VENV_ROOT=$(settings_var PINAX_VENV_ROOT)
-export PROJECT_ROOT=$JAGOM_HOME
-
+PRJ="$1"
+PRJ_ENV_ROOT=$(settings_var PRJ_ENV_ROOT )
 PRJS_ENVS_PATH=$(settings_var PRJS_ENVS_PATH )
-PRJ_LINT_PATH=$(settings_var PRJ_LINT_PATH )
 PRJ_ROOT="$PRJS_ENVS_PATH/$PRJ"
-PRJ_ROOT_CONF_FILE=$PRJ_ROOT/conf/trac.ini
-
+PRJ_CONF_FILE=$PRJ_ROOT/conf/trac.ini
+PRJ_AUTH_FILE=$PRJ_ROOT/conf/authzpolicy.conf
 

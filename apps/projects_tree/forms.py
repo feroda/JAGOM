@@ -27,3 +27,16 @@ class ProjectTreeForm(ProjectForm):
 
 #    def clean_member_groups(self):
 #        return map(lambda pk: Group.objects.get(pk=int(pk)), self.data.get("member_groups",[]))
+
+
+# TODO: This is temporary ! 
+# Used only because AddUserForm.save does not issue a signal 
+from pinax.apps.projects.forms import AddUserForm
+from tracstuff.models import update_members_list
+
+class MyAddUserForm(AddUserForm):
+
+    def save(self, *args, **kw):
+        rv = super(MyAddUserForm, self).save(*args, **kw)
+        update_members_list(sender=None, instance=self.project)
+        return rv

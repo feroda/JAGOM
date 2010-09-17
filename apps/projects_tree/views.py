@@ -10,10 +10,15 @@ from django.contrib.auth.models import User
 
 from pinax.apps.projects.models import Project, ProjectMember
 from pinax.apps.projects.views import create as pinax_project_create
+from pinax.apps.projects.views import project as pinax_project_project
 from projects_tree.forms import ProjectTreeForm
+from projects_tree.forms import MyAddUserForm
 from projects_tree.models import ProjectTree, ProjectProfile
 
 from projects_tree import get_base_project_for_language
+
+#FIXME: will not be necessary when we will issue a signal upon member deletion
+from tracstuff.models import update_members_list
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -72,5 +77,11 @@ def delete_member(request, group_slug, member_id):
             "project_name": projectmember.project.name,
         }
     )
+    #TODO: issue a signal
+    update_members_list(sender=None, instance=projectmember.project)
+
     return HttpResponse("OK")
 
+def project(request, adduser_form_class=MyAddUserForm, **kw):
+
+    return pinax_project_project(request, adduser_form_class=adduser_form_class, **kw)
