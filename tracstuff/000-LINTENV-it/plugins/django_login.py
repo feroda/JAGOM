@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2010 BeFair s.n.c <www.befair.it>
+# Copyright (C) 2010 BeFair s.n.c
 # 
 # All rights reserved.
 #
