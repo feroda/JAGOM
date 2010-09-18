@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 21:50+0200\n"
+"POT-Creation-Date: 2010-09-18 12:40+0200\n"
 "PO-Revision-Date: 2010-06-08 20:03+0200\n"
 "Last-Translator: Luca Ferroni <fero@jagom.org>\n"
 "Language-Team: Italian \n"
@@ -192,7 +192,6 @@ msgstr "Membri"
 
 #: apps/basic_groups/templates/basic_groups/groups.html:11
 #: apps/basic_groups/templates/basic_groups/groups.html:14
-#: templates/site_base.html:36
 msgid "Groups"
 msgstr "Gruppi"
 
@@ -230,21 +229,25 @@ msgstr ""
 msgid "website"
 msgstr ""
 
-#: apps/projects_tree/models.py:13 apps/projects_tree/models.py:33
+#: apps/projects_tree/forms.py:17 apps/projects_tree/models.py:45
+msgid "Make each JAGOM user able to update project notes and manage tickets"
+msgstr ""
+
+#: apps/projects_tree/models.py:16 apps/projects_tree/models.py:38
 #, fuzzy
 msgid "project"
 msgstr "Progetto"
 
-#: apps/projects_tree/models.py:18
+#: apps/projects_tree/models.py:21
 msgid "cloned from"
 msgstr ""
 
-#: apps/projects_tree/models.py:22
+#: apps/projects_tree/models.py:25
 #, fuzzy
 msgid "groups"
 msgstr "Gruppi"
 
-#: apps/projects_tree/views.py:61
+#: apps/projects_tree/views.py:75
 #, python-format
 msgid "Member %(user)s has been removed from project %(project_name)s deleted."
 msgstr ""
@@ -426,10 +429,6 @@ msgstr "Profilo"
 #: templates/site_base.html:38 templates/projects/project.html:65
 msgid "Project"
 msgstr "Progetto"
-
-#: templates/site_base.html:39
-msgid "Notices"
-msgstr "Notifiche"
 
 #: templates/site_base.html:47 templates/about/about.html:5
 msgid "About"
@@ -723,6 +722,9 @@ msgstr "Gruppi"
 #: templates/projects/project_item.html:21
 msgid "Parent:"
 msgstr ""
+
+#~ msgid "Notices"
+#~ msgstr "Notifiche"
 
 #~ msgid ""
 #~ "\n"

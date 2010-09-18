@@ -11,5 +11,11 @@ fi
 
 shift
 
+VALUE="$1"
+shift
+for el in $*; do
+    VALUE=$VALUE", $el"
+done
+
 # Update members list
-sed -i "s/^administrators = .*/administrators = $*/g" $PRJ_AUTH_FILE
+sed -i "s/^administrators = .*/administrators = $VALUE/g" $PRJ_AUTH_FILE

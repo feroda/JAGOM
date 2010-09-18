@@ -12,3 +12,8 @@ cd JAGOM
 ./jagomd upgrade
 ./jagomd runserver
 
+# You need to redirect trac login and logout. In apache.conf add:
+#RewriteEngine on
+#RewriteRule ^(/trac/.*/)login$ http://%{HTTP_HOST}/account/login?backto=$1 [L,QSA]
+#RewriteRule ^(/trac/.*/)logout$ http://%{HTTP_HOST}/account/logout?backto=$1 [L,QSA]
+

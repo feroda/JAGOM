@@ -1,5 +1,7 @@
 
 # AAA: OBSOLETED ! !! ! 
+exit 0
+
 if [ -z "$JAGOM_HOME" ]; then
     echo "Error: JAGOM_HOME is not set, cannot continue"
     exit 101
