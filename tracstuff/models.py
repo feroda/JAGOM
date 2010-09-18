@@ -78,13 +78,14 @@ def update_members_list(sender, **kwargs):
     prj = instance
     members = prj.members.all()
 
-    #TODO: get flag for members role in project and then invoke 
-    #update_members and update_administrators script
-    admins = [] #base.values_list(members.filter(is_admin=True), 'username')
+    admins = []
     users = []
 
     for m in members:
-        if 0: #m.is_admin=True 
+        # TODO: get flag for members role in project and then invoke 
+        # update_members and update_administrators script.
+        # In 0.1 all members are admins !
+        if 1: #m.is_admin=True 
             admins.append(m.user.username)
         else:
             users.append(m.user.username)

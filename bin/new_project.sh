@@ -43,7 +43,8 @@ sed -i "s@^base_url\ = \(.*/\).*@base_url = \1$1@g" $PRJ_CONF_FILE
 
 # Update administrators list
 sed -i "s/^administrators = .*/administrators = $ADMIN/g" $PRJ_AUTH_FILE
-sed -i "s/^members = .*/members = /g" $PRJ_AUTH_FILE
+# TODO: In 0.1 all members are administrators
+# sed -i "s/^members = .*/members = /g" $PRJ_AUTH_FILE
 
 chmod -R u+w $PRJ_ROOT
 
