@@ -47,6 +47,8 @@ urlpatterns = patterns("",
     url(r"^tribes/", include("pinax.apps.tribes.urls")),
     url(r"^flag/", include("flag.urls")),
 
+    (r'^i18n/', include('django.conf.urls.i18n')),
+
     #WAS 0.9.dev12: url(r"^account/signup/$", signup_view, name="acct_signup"),
 
     url(r"^get_fortune/", "fortune.views.get_fortune", name="get_fortune"),
