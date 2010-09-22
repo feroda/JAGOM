@@ -4,5 +4,6 @@ def jagom_settings(request):
     return {
         "VERSION": settings.VERSION,
         "PRJS_URL": settings.PRJS_URL,
+        "DEBUG": settings.DEBUG,
     }
 

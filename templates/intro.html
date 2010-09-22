@@ -57,7 +57,7 @@
             </p>
             <p class="appear" id="box-fortune">Loading fortune...</p>
         </div>
-        <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn(); $('#head').fadeTo('slow',0.9); document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
+        <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn();  document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
             <p>
             <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
@@ -109,25 +109,6 @@
 
 {% endblock %}
             
-{% block footer %}
-    <div class="legal text-center">
-        JAGOM {{ VERSION|join:"." }} &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">BeFair s.n.c.</a>&gt;
-    </div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://base.befair.it/piwik/" : "http://base.befair.it/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://base.befair.it/piwik/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tag -->
-{% endblock %}
-
 {% block extra_body_base %}
     <script type="text/javascript">
         var timerInterval = 10000;
@@ -148,15 +129,25 @@ piwikTracker.enableLinkTracking();
                 $(data).find('item').each ( function () {
                     var item = $(this);
                     var title = item.find('title').text();
-                    //Hack
+                    //FIXME Hack
                     if (title.indexOf('Changeset') != -1) {
                         title = 'Modifica al programma: ' + title.substr(64);
+                    } else 
+                    if ((title.indexOf('Ticket') == 0)||(title.indexOf('Segnalazione') == 0)) {
+                        var isubject= title.indexOf("(");
+                        var first_part = title.substr(0, isubject);
+                        //created by user 
+                        var isubject_end = title.lastIndexOf(")");
+                        var second_part= title.substr(isubject_end+1); 
+                        //ticket subject
+                        var subject = title.substr(isubject+1, isubject_end-isubject-1); 
+                        title = first_part + second_part + "<br />" + subject;
                     }
+                    //End hack
                     var author = item.find('dc:creator').text();
                     var pubDate = item.find('pubDate').text();
 
                     var link = item.find('link').text();
-                    var description = item.find('description').text();
 
                     // now create a var 'html' to store the markup we're using
                     // to output the feed to the browser window
@@ -165,7 +156,8 @@ piwikTracker.enableLinkTracking();
                     html += "<a href=\"" + link + "\" target=\"_blank\"> " + title + "<\/a>";
                     html += "<\/h2>";
                     html += "<em class=\"date\">" + pubDate + "<\/em>";
-                    html += "<p class=\"description\">" + description + "<\/p>";
+                    //var description = item.find('description').text();
+                    //html += "<p class=\"description\">" + description + "<\/p>";
                     html += "<\/div>";
          
                     //put that feed content on the screen!
@@ -177,7 +169,11 @@ piwikTracker.enableLinkTracking();
         $('document').ready(function() {
             periodicalFortune();
             //update_rss_feed(JAGOM_timeline_feed_url, $('#what-are-we-doing-content'));
+            $('body').mouseenter(function() {
+                $('#head').fadeTo('slow', 0.9);
+            });
         });
+
     </script>
     {% block extra_body %}{% endblock %}
 {% endblock %}

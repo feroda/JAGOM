@@ -15,13 +15,14 @@ virtualenv --no-site-packages --clear --distribute trac_venv
 pip install Babel
 pip install Trac==dev
 pip install configobj Pygments
+easy_install http://trac-hacks.org/svn/tracwysiwygplugin/0.12
 
 deactivate
 
 # Web server should have write permissions to trac environments
 env_parent_dir=trac_venv/tracs
 chgrp www-data $env_parent_dir
-chmod g+w $env_parent_dir
+chmod g+ws $env_parent_dir
 cd $env_parent_dir
 ln -s ../../JAGOM/tracstuff/000-LINTENV-it .
 ln -s ../../JAGOM/tracstuff/000-LINTENV-en .

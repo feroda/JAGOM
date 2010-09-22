@@ -8,3 +8,4 @@ deploy/trac.wsgi
 deploy/django.wsgi
 log/
 *.patch
+*.bak

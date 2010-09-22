@@ -41,26 +41,10 @@
     {% endif %}
 {% endblock %}
 
-{% block footer %}
-<div class="legal">
-    &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">BeFair s.n.c.</a>&gt;
+{% block legalities %}
     - <a href="{% url about %}">{% trans "About" %}</a>
     - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
     - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-</div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://base.befair.it/piwik/" : "http://base.befair.it/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://base.befair.it/piwik/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tag -->
 {% endblock %}
 
 {% block extra_body_base %}
