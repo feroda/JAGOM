@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-23 02:57+0200\n"
+"POT-Creation-Date: 2010-09-23 04:05+0200\n"
 "PO-Revision-Date: 2010-09-23 03:00+0100\n"
 "Last-Translator: fero <fero@jagom.org>\n"
 "Language-Team: Italian\n"
@@ -127,7 +127,7 @@ msgstr "Gruppo"
 #: apps/basic_groups/templates/basic_groups/group.html:38
 #: templates/projects/project.html:69
 msgid "Slug:"
-msgstr "Slug:"
+msgstr "Abbreviazione:"
 
 #: apps/basic_groups/templates/basic_groups/group.html:39
 #: templates/projects/project.html:70
@@ -384,12 +384,14 @@ msgstr ""
 
 #: templates/intro.html:71
 msgid ""
-"Roadmap: now you can manage your projects. Soon you will be able to manage "
-"and partecipate in groups. After this you get visibility of active projects "
-"and groups and their relationships"
+"Roadmap: now you can manage your projects, in few days we will end with "
+"translation. Soon you will be able to manage and partecipate in groups. "
+"After this you get visibility of active projects and groups and their "
+"relationships"
 msgstr ""
-"Prossimi sviluppi: ora puoi gestire i tuoi progetti. Presto potrai gestire e partecipare ai gruppi. "
-"Successivamente mostreremo i progetti attivi, i gruppi e le loro relazioni "
+"La strada: ora puoi gestire i tuoi progetti, in pochi giorni termineremo la traduzione. "
+"Presto potrai gestire e partecipare ai gruppi. Successivamente "
+"mostreremo i progetti attivi, i gruppi e le loro relazioni "
 
 #: templates/intro.html:73
 msgid "More on our vision"

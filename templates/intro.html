@@ -51,10 +51,12 @@
     <!-- Start main content -->
     <div class="table_layout center">
         <div class="cell_layout" style="min-width: 15em;">
+            {% comment %} 
             <p style="margin: 0.5em 0;">
                 <video width="200" src="{{ STATIC_URL }}videos/0_IllMakeIt-{{ LANGUAGE_CODE }}.ogv" style="display:none" id="illmakeit-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
                 <a href="#" onclick="$(this).hide(); $('video#illmakeit-video').fadeIn(); document.getElementById('illmakeit-video').play();">{% trans "I'll make it!" %}</a>
             </p>
+            {% endcomment %}
             <p class="appear" id="box-fortune">Loading fortune...</p>
         </div>
         <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn();  document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
@@ -66,6 +68,7 @@
             {% blocktrans %}
             JAGOM makes your project management simpler and more reliable!<p />
             {% endblocktrans %}
+            </p><p>{% blocktrans %}Roadmap: now you can manage your projects, in few days we will end with translation. Soon you will be able to manage and partecipate in groups. After this you get visibility of active projects and groups and their relationships{% endblocktrans %}
             </p><p>
                 <a href="http://www.jagom.org/trac/JAGOM/wiki" target="_blank">{% trans "More on our vision" %}</a>
                 <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
@@ -83,7 +86,6 @@
                 {% else %}
                     {% blocktrans %}Start by <a href="{{ login_url }}">logging in</a>.{% endblocktrans %}
                 {% endifsetting %}
-                <p>{% blocktrans %}The goal of this version is to give an idea of principles JAGOM is based on, and to get attention of interested people{% endblocktrans %}</p>
             </p>
             </div><hr />
             <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
@@ -97,14 +99,14 @@
             </div>
         </span>
     </div>
-    <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
+    <video src="{{ STATIC_URL }}intro.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
     </p>
     <p class="what_next">
         <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').toggle('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
         
     </p>
 	<p class="what_next">
-		<a href="http://www.befair.it/2010/06/29/annuncio-di-rilascio-jagom-0-0-9/">{% trans "Read the 0.0.9 announcement" %}</a>
+		<a href="http://www.befair.it/2010/06/29/annuncio-di-rilascio-jagom-0-1/">{% trans "Read the announcement of the last features added (italian only)" %}</a>
 	</p>
 
 {% endblock %}
@@ -138,10 +140,10 @@
                         var first_part = title.substr(0, isubject);
                         //created by user 
                         var isubject_end = title.lastIndexOf(")");
-                        var second_part= title.substr(isubject_end+1); 
+                        var second_part= title.substr(isubject_end+2); 
                         //ticket subject
                         var subject = title.substr(isubject+1, isubject_end-isubject-1); 
-                        title = first_part + second_part + "<br />" + subject;
+                        title = subject + " (" + second_part + ")";
                     }
                     //End hack
                     var author = item.find('dc:creator').text();

@@ -21,10 +21,11 @@ def execute_and_log(cmd_args):
     log.debug("stderr: %s" % stderr)
 
 def init_logger():
-    handler = logging.StreamHandler()
-    handler.setFormatter( logging.Formatter('%(asctime)s %(levelname)s %(message)s') )
-    log.addHandler(handler)
-    log.setLevel(logging.DEBUG)
-    log.debug("Starting logger...")
+    if settings.DEBUG:
+        handler = logging.StreamHandler()
+        handler.setFormatter( logging.Formatter('%(asctime)s %(levelname)s %(message)s') )
+        log.addHandler(handler)
+        log.setLevel(logging.DEBUG)
+        log.debug("Starting logger...")
 
 init_logger()

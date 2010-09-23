@@ -4,21 +4,23 @@
 <dt>{{ project.name }} (<a href="{{ project.get_absolute_url }}">{{ project.slug }}</a>)</dt>
 <dd>{{ project.description }}
     <div class="stats">
-        {% trans "Members:" %} <b>{{ project.member_count }}</b>
+        {% trans "Members" %}: <b>{{ project.member_count }}</b>
         <br />
-        {% trans "Topics:" %} <b>{{ project.topic_count }}</b>
+        {% trans "Topics" %}: <b>{{ project.topic_count }}</b>
         <br />
         {% show_tags_for project %} {# @@@ #}
     </div>
     <div class="tree-info">
-        {% trans "Groups:" %} 
+{% comment %}
+        {% trans "Groups" %}: 
         {# TODO: WRITE A TAG #}
         <ul>
             {% for g in project.relations.member_groups.all %}
             <li><a href="{{ g.get_absolute_url }}">{{ g }}</a></li>
             {% endfor %}
         </ul>
-        {% trans "Parent:" %} 
+{% endcomment %}
+        {% trans "Template" %}: 
             {% with project.relations.parent as p %}
             <a href="{{ p.get_absolute_url }}">{{ p }}</a>
             {% endwith %}
