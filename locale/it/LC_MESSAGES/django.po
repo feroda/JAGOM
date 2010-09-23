@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-18 12:40+0200\n"
-"PO-Revision-Date: 2010-06-08 20:03+0200\n"
-"Last-Translator: Luca Ferroni <fero@jagom.org>\n"
-"Language-Team: Italian \n"
+"POT-Creation-Date: 2010-09-23 02:57+0200\n"
+"PO-Revision-Date: 2010-09-23 03:00+0100\n"
+"Last-Translator: fero <fero@jagom.org>\n"
+"Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps/basic_groups/forms.py:13
 msgid ""
@@ -38,94 +38,91 @@ msgstr "Nuovo membro del gruppo"
 
 #: apps/basic_groups/management.py:11
 msgid "a group you are a member of has a new member"
-msgstr ""
+msgstr "un gruppo di cui si membro ha un nuovo membro"
 
 #: apps/basic_groups/management.py:12
 msgid "New Member Of Group You Created"
-msgstr ""
+msgstr "Nuovo Membro di un Gruppo Che Hai Creato"
 
 #: apps/basic_groups/management.py:12
 msgid "a group you created has a new member"
-msgstr ""
+msgstr "un gruppo che hai creato ha un nuovo membro"
 
 #: apps/basic_groups/management.py:13
 msgid "New Group Created"
-msgstr ""
+msgstr "Nuovo gruppo creato"
 
 #: apps/basic_groups/management.py:13
 msgid "a new group has been created"
-msgstr ""
+msgstr "è stato creato un nuovo gruppo"
 
 #: apps/basic_groups/models.py:14
 msgid "members"
-msgstr ""
+msgstr "membri"
 
 #: apps/basic_groups/views.py:63
 #, python-format
 msgid "Group %(group)s deleted."
-msgstr ""
+msgstr "Gruppo %(group)s cancellato."
 
 #: apps/basic_groups/views.py:91
 #, python-format
 msgid "You have joined the group %(group)s"
-msgstr ""
+msgstr "Ti sei unito al gruppo %(group)s."
 
 #: apps/basic_groups/views.py:107
 #, python-format
 msgid "You have left the group %(group)s"
-msgstr ""
+msgstr "Hai abbandonato il gruppo %(group)s."
 
 #: apps/basic_groups/templates/basic_groups/base.html:14
 msgid "Create a Group"
-msgstr ""
+msgstr "Crea un gruppo"
 
 #: apps/basic_groups/templates/basic_groups/base.html:15
 #: apps/basic_groups/templates/basic_groups/your_groups.html:8
 #: apps/basic_groups/templates/basic_groups/your_groups.html:12
-#, fuzzy
 msgid "Your Groups"
-msgstr "Gruppi"
+msgstr "I tuoi gruppi"
 
 #: apps/basic_groups/templates/basic_groups/base.html:17
-#, fuzzy
 msgid "All Groups"
-msgstr "Gruppi"
+msgstr "Tutti i gruppi"
 
 #: apps/basic_groups/templates/basic_groups/create.html:12
 #: apps/basic_groups/templates/basic_groups/create.html:15
-#, fuzzy
 msgid "Create Group"
-msgstr "Autore:"
+msgstr "Crea un gruppo"
 
 #: apps/basic_groups/templates/basic_groups/create.html:17
 #: apps/basic_groups/templates/basic_groups/groups.html:16
 msgid "This is just a basic group example with no extra content items."
 msgstr ""
+"Questo è solo un esempio base di gruppo senza elementi extra contenuti."
 
 #: apps/basic_groups/templates/basic_groups/create.html:25
-#, fuzzy
 msgid "create"
-msgstr "Creato il:"
+msgstr "crea"
 
 #: apps/basic_groups/templates/basic_groups/create.html:32
 #: apps/basic_groups/templates/basic_groups/groups.html:22
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
 "</a> to create your own group or join an existing one."
 msgstr ""
-"Inizia <a href=\"%(signup_url)s\">registrandoti</a> e <a href=\"%(login_url)s"
-"\">accedendo</a> alla rete."
+"<a href=\"%(signup_url)s\">Registrati</a> e <a href=\"%(login_url)s"
+"\">accedi</a> alla rete per creare il tuo gruppo o partecipare ad uno già "
+"esistente."
 
 #: apps/basic_groups/templates/basic_groups/group.html:17
-#: templates/projects/project.html:23
+#: templates/projects/project.html:23 templates/projects/project_item.html:7
 msgid "Members"
 msgstr "Membri"
 
 #: apps/basic_groups/templates/basic_groups/group.html:35
-#, fuzzy
 msgid "Group"
-msgstr "Gruppi"
+msgstr "Gruppo"
 
 #: apps/basic_groups/templates/basic_groups/group.html:38
 #: templates/projects/project.html:69
@@ -148,56 +145,54 @@ msgid "Edit details"
 msgstr "Modifica dettagli"
 
 #: apps/basic_groups/templates/basic_groups/group.html:55
-#, fuzzy
 msgid "update"
-msgstr "aggiornato"
+msgstr "aggiorna"
 
 #: apps/basic_groups/templates/basic_groups/group.html:61
 #: apps/basic_groups/templates/basic_groups/group.html:64
-#, fuzzy
 msgid "Delete Group"
-msgstr "Elimina il progetto"
+msgstr "Elimina il gruppo"
 
 #: apps/basic_groups/templates/basic_groups/group.html:67
 msgid ""
 "You are not the only member of the group so you cannot delete the group."
-msgstr ""
+msgstr "Non sei l'unico membro del gruppo quindi non puoi cancellarlo."
 
 #: apps/basic_groups/templates/basic_groups/group.html:78
 msgid "You are the creator of this group so can't leave (yet)."
 msgstr ""
+"Sei il creatore di questo gruppo quindi non puoi (ancora) abbandonarlo."
 
 #: apps/basic_groups/templates/basic_groups/group.html:81
 msgid "leave"
-msgstr ""
+msgstr "abbandona"
 
 #: apps/basic_groups/templates/basic_groups/group.html:85
 msgid "join group"
-msgstr ""
+msgstr "unisciti al gruppo"
 
 #: apps/basic_groups/templates/basic_groups/group.html:92
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
 "</a> to join this group."
 msgstr ""
-"Inizia <a href=\"%(signup_url)s\">registrandoti</a> e <a href=\"%(login_url)s"
-"\">accedendo</a> alla rete."
+"<a href=\"%(signup_url)s\">Registrati</a> e <a href=\"%(login_url)s"
+"\">accedi</a> alla rete per partecipare a questo gruppo."
 
 #: apps/basic_groups/templates/basic_groups/group_item.html:7
-#: templates/projects/project_item.html:7
-#, fuzzy
 msgid "Members:"
-msgstr "Membri"
+msgstr "Membri:"
 
 #: apps/basic_groups/templates/basic_groups/groups.html:11
 #: apps/basic_groups/templates/basic_groups/groups.html:14
+#: templates/projects/project_item.html:14
 msgid "Groups"
 msgstr "Gruppi"
 
 #: apps/basic_groups/templates/basic_groups/your_groups.html:15
 msgid "These are the groups you participate in."
-msgstr ""
+msgstr "Questi sono i gruppi di cui fai parte."
 
 #: apps/basic_groups/templates/notification/groups_created_new_member/notice.html:2
 #: apps/basic_groups/templates/notification/groups_new_member/notice.html:2
@@ -206,64 +201,66 @@ msgid ""
 "<a href=\"%(user_url)s\">%(user)s</a> has joined the group <a href=\"%"
 "(group_url)s\">%(group)s</a>."
 msgstr ""
+"<a href=\"%(user_url)s\">%(user)s</a> si è unito al gruppo <a href=\"%"
+"(group_url)s\">%(group)s</a>."
 
 #: apps/basic_groups/templates/notification/groups_new_tribe/notice.html:2
 #, python-format
 msgid "A new group <a href=\"%(group_url)s\">%(group)s</a> has been created."
 msgstr ""
+"Un nuovo gruppo <a href=\"%(group_url)s\">%(group)s</a> è stato creato."
 
 #: apps/profiles/models.py:8
 msgid "name"
-msgstr ""
+msgstr "nome"
 
 #: apps/profiles/models.py:9
-#, fuzzy
 msgid "about"
-msgstr "Informazioni"
+msgstr "informazioni"
 
 #: apps/profiles/models.py:10
 msgid "location"
-msgstr ""
+msgstr "posizione"
 
 #: apps/profiles/models.py:11
 msgid "website"
-msgstr ""
+msgstr "sito web"
 
 #: apps/projects_tree/forms.py:17 apps/projects_tree/models.py:45
 msgid "Make each JAGOM user able to update project notes and manage tickets"
 msgstr ""
+"Consenti a tutti gli utenti di JAGOM di modificare gli appunti e le cose da "
+"fare del tuo progetto"
 
 #: apps/projects_tree/models.py:16 apps/projects_tree/models.py:38
-#, fuzzy
 msgid "project"
-msgstr "Progetto"
+msgstr "progetto"
 
 #: apps/projects_tree/models.py:21
 msgid "cloned from"
-msgstr ""
+msgstr "clonato da"
 
 #: apps/projects_tree/models.py:25
-#, fuzzy
 msgid "groups"
-msgstr "Gruppi"
+msgstr "gruppi"
 
 #: apps/projects_tree/views.py:75
 #, python-format
 msgid "Member %(user)s has been removed from project %(project_name)s deleted."
-msgstr ""
+msgstr "Il membro %(user)s è stato rimosso dal progetto %(project_name)s."
 
 #: templates/base.html:20 templates/intro_base.html:17
 #: templates/base/messages.html:5
 msgid "clear"
-msgstr ""
+msgstr "chiudi"
 
 #: templates/homepage.html:6
 msgid "Welcome"
-msgstr ""
+msgstr "Benvenuto"
 
 #: templates/homepage.html:11
 msgid "Welcome to Pinax"
-msgstr ""
+msgstr "Benvenuto in Pinax"
 
 #: templates/homepage.html:14
 msgid ""
@@ -283,6 +280,9 @@ msgid ""
 "        <a href=\"http://pinaxproject.com/\">http://pinaxproject.com/</a>.\n"
 "        "
 msgstr ""
+"\n"
+"        Per maggiori informazioni su Pinax, visita\n"
+"        <a href=\"http://pinaxproject.com/\">http://pinaxproject.com/</a>.\n"
 
 #: templates/homepage.html:30
 msgid "About this project"
@@ -299,6 +299,13 @@ msgid ""
 "        content apps.\n"
 "        "
 msgstr ""
+"\n"
+"        Questo progetto dimostra le funzionalità del gruppo attraverso un "
+"gruppo scarno\n"
+"        che non contiene applicazioni extra, così come due gruppi "
+"aggiuntivi,\n"
+"        tribù e progetti, che mostrano diversi tipi di associazione e "
+"applicazioni.\n"
 
 #: templates/homepage.html:44
 #, python-format
@@ -311,15 +318,17 @@ msgid ""
 "You can <a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s"
 "\">Log in</a> to try out the site."
 msgstr ""
+"Puoi <a href=\"%(signup_url)s\">registrarti</a> e <a href=\"%(login_url)s"
+"\">accedere</a> per provare il sito."
 
 #: templates/homepage.html:51
 #, python-format
 msgid "You can <a href=\"%(login_url)s\">Log in</a> to try out the site."
-msgstr ""
+msgstr "Puoi <a href=\"%(login_url)s\">accedere</a> per provare il sito."
 
 #: templates/intro.html:18
 msgid "Account"
-msgstr ""
+msgstr "Nome utente"
 
 #: templates/intro.html:18
 msgid "Admin"
@@ -345,7 +354,7 @@ msgstr "Registrati"
 msgid "Last activities"
 msgstr "Ultime attività"
 
-#: templates/intro.html:40 templates/intro.html.py:71 templates/intro.html:95
+#: templates/intro.html:40 templates/intro.html.py:74 templates/intro.html:97
 msgid "Close"
 msgstr "Chiudi"
 
@@ -353,15 +362,15 @@ msgstr "Chiudi"
 msgid "Last developers activities"
 msgstr "Ultime attività degli sviluppatori"
 
-#: templates/intro.html:56
+#: templates/intro.html:57
 msgid "I'll make it!"
 msgstr "Io ce la farò!"
 
-#: templates/intro.html:63
+#: templates/intro.html:65
 msgid "What is this?"
 msgstr "Di cosa si tratta?"
 
-#: templates/intro.html:66
+#: templates/intro.html:68
 msgid ""
 "\n"
 "            JAGOM makes your project management simpler and more reliable!"
@@ -369,19 +378,28 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"            JAGOM ti aiuta a gestire i progetti in modo semplice ed efficace!"
-"<p />\n"
+"            JAGOM ti aiuta a gestire qualsiasi progetto in modo semplice ed "
+"efficace!<p />\n"
 "            "
 
-#: templates/intro.html:70
+#: templates/intro.html:71
+msgid ""
+"Roadmap: now you can manage your projects. Soon you will be able to manage "
+"and partecipate in groups. After this you get visibility of active projects "
+"and groups and their relationships"
+msgstr ""
+"Prossimi sviluppi: ora puoi gestire i tuoi progetti. Presto potrai gestire e partecipare ai gruppi. "
+"Successivamente mostreremo i progetti attivi, i gruppi e le loro relazioni "
+
+#: templates/intro.html:73
 msgid "More on our vision"
 msgstr "Altro sulla nostra visione"
 
-#: templates/intro.html:75
+#: templates/intro.html:78
 msgid "What next?"
 msgstr "Quindi che faccio?"
 
-#: templates/intro.html:82 templates/about/what_next.html:49
+#: templates/intro.html:85 templates/about/what_next.html:49
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
@@ -390,37 +408,31 @@ msgstr ""
 "Inizia <a href=\"%(signup_url)s\">registrandoti</a> e <a href=\"%(login_url)s"
 "\">accedendo</a> alla rete."
 
-#: templates/intro.html:84 templates/about/what_next.html:51
+#: templates/intro.html:87 templates/about/what_next.html:51
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr "Inizia <a href=\"%(login_url)s\">accedendo</a> alla rete."
 
-#: templates/intro.html:86
-msgid ""
-"The goal of this version is to give an idea of principles JAGOM is based on, "
-"and to get attention of interested people"
-msgstr ""
-"Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si "
-"fonda e iniziare così a calamitare l'attenzione delle persone interessate"
-
-#: templates/intro.html:89
+#: templates/intro.html:91
 msgid "We are looking for you"
-msgstr ""
+msgstr "Ti stiamo cercando"
 
-#: templates/intro.html:94
+#: templates/intro.html:96
 #, python-format
 msgid ""
 "If you share the vision and you want to spend some time on it, ... we hope "
 "someday you'll join us! <a href=\"mailto:%(CONTACT_EMAIL)s\">Contact us</a>"
 msgstr ""
+"Se condividi l'idea e vuoi dedicarci un po' di tempo, ... speriamo he un "
+"giorno ti unirai a noi! <a href=\"mailto:%(CONTACT_EMAIL)s\">Contact us</a>"
 
-#: templates/intro.html:103
+#: templates/intro.html:105
 msgid "Take a look at JAGOM grain growth"
 msgstr "Guarda la crescita del granello JAGOM"
 
-#: templates/intro.html:107
-msgid "Read the 0.0.9 announcement"
-msgstr "Leggi l'annuncio di rilascio della 0.0.9"
+#: templates/intro.html:109
+msgid "Read the announcement of the last features added (italian only)"
+msgstr "Leggi l'annuncio delle ultime funzionalità aggiunte"
 
 #: templates/site_base.html:35
 msgid "Profile"
@@ -430,15 +442,15 @@ msgstr "Profilo"
 msgid "Project"
 msgstr "Progetto"
 
-#: templates/site_base.html:47 templates/about/about.html:5
+#: templates/site_base.html:45 templates/about/about.html:5
 msgid "About"
 msgstr "Informazioni"
 
-#: templates/site_base.html:48 templates/about/terms.html:5
+#: templates/site_base.html:46 templates/about/terms.html:5
 msgid "Terms of Service"
 msgstr "Termini del servizio"
 
-#: templates/site_base.html:49 templates/about/privacy.html:5
+#: templates/site_base.html:47 templates/about/privacy.html:5
 msgid "Privacy Policy"
 msgstr "Politica di privacy"
 
@@ -514,45 +526,47 @@ msgstr "Quindi che faccio?"
 
 #: templates/about/what_next.html:12
 msgid "Here are some things to do to get started with this site:"
-msgstr ""
+msgstr "Ecco alcune cose da fare per iniziare con questo sito:"
 
 #: templates/about/what_next.html:20
 msgid "verify an email address"
-msgstr ""
+msgstr "verifica un indirizzo emali"
 
 #: templates/about/what_next.html:21
 msgid ""
 "so you can receive notifications, reset your password and so people can find "
 "you more easily."
 msgstr ""
+"così puoi rcevere notifiche, cambiare la tua password e così le persone "
+"possono trovarti più facilmente"
 
 #: templates/about/what_next.html:27
 msgid "fill out your profile"
-msgstr ""
+msgstr "completa il tuo profilo"
 
 #: templates/about/what_next.html:28
 msgid "to tell the world a little about yourself."
-msgstr ""
+msgstr "per dire al mondo qualcosa di te."
 
 #: templates/about/what_next.html:34
 msgid "invite more people to the site"
-msgstr ""
+msgstr "invita più persone al sito"
 
 #: templates/about/what_next.html:34
 msgid "[admin only]"
-msgstr ""
+msgstr "[solo per l'amministratore]"
 
 #: templates/about/what_next.html:35
 msgid "so more people can share in the fun."
-msgstr ""
+msgstr "così potranno condividere il divertimento."
 
 #: templates/about/what_next.html:39
 msgid "seed your grains"
-msgstr ""
+msgstr "semina i tuoi granelli"
 
 #: templates/about/what_next.html:40
 msgid "so you can make them grow and begin to keep track of your work."
-msgstr ""
+msgstr "così potrai farli crescere e iniziare a tenere traccia del tuo lavoro."
 
 #: templates/account/base.html:10
 msgid "E-Mail Addresses"
@@ -632,11 +646,11 @@ msgstr ""
 
 #: templates/projects/project.html:46
 msgid "Inherited from..."
-msgstr ""
+msgstr "Ereditato da..."
 
 #: templates/projects/project.html:68
 msgid "Cloned from:"
-msgstr ""
+msgstr "Clonato da:"
 
 #: templates/projects/project.html:88
 msgid "updated"
@@ -660,42 +674,44 @@ msgstr "Elimina il progetto"
 
 #: templates/projects/project.html:133
 msgid "Keep in touch with your grain members"
-msgstr ""
+msgstr "Tieniti in contatto coi membri del tuo granello"
 
 #: templates/projects/project.html:134
 msgid ""
 "JAGOM has setup those mailing-list in order to help you to keep in touch "
 "with your active members or simply people who are interested in your project"
 msgstr ""
+"JAGOM ha creato queste mailing-list pr aiutarti a restare in contatto con i "
+"tuoi membri attivi o semplicemente con persone interessate al tuo progetto"
 
 #: templates/projects/project.html:142
 msgid "Let your grain grow!"
-msgstr ""
+msgstr "Fai crescere il tuo granello!"
 
 #: templates/projects/project.html:144
 msgid "Go to"
-msgstr ""
+msgstr "Vai a"
 
 #: templates/projects/project.html:144
 msgid "the project management page"
-msgstr ""
+msgstr "la pagina di gestione del progetto"
 
 #: templates/projects/project.html:147
 msgid "Discussion Topics"
-msgstr ""
+msgstr "Argomenti di discussione"
 
 #: templates/projects/project.html:155 templates/projects/project.html:171
 msgid "more..."
-msgstr ""
+msgstr "altro..."
 
 #: templates/projects/project.html:158
-#, fuzzy, python-format
+#, python-format
 msgid "None yet. <a href=\"%(new_topic_url)s\">Start one...</a>"
-msgstr "Ti stai chiedendo <a href=\"%(what_next_url)s\">cosa fare ora</a>?"
+msgstr "Ancora nessuno. <a href=\"%(new_topic_url)s\">Inizia tu...</a>"
 
 #: templates/projects/project.html:163
 msgid "Wiki Articles"
-msgstr ""
+msgstr "Articoli wiki"
 
 #: templates/projects/project.html:175
 #, python-format
@@ -705,26 +721,31 @@ msgid ""
 "\"wiki\">wiki</a> to start a new article.\n"
 "                    "
 msgstr ""
+"\n"
+"                        Non ancora. Vai a <a href=\"%(wiki_url)s\" title="
+"\"wiki\">wiki</a> per iniziare un nuovo articolo.\n"
 
 #: templates/projects/project.html:181
 msgid "Tasks"
-msgstr ""
+msgstr "Incarichi"
 
 #: templates/projects/project_item.html:9
-msgid "Topics:"
-msgstr ""
-
-#: templates/projects/project_item.html:14
-#, fuzzy
-msgid "Groups:"
-msgstr "Gruppi"
+msgid "Topics"
+msgstr "Argomenti"
 
 #: templates/projects/project_item.html:21
-msgid "Parent:"
-msgstr ""
+msgid "Template"
+msgstr "Modello"
 
-#~ msgid "Notices"
-#~ msgstr "Notifiche"
+#~ msgid ""
+#~ "The goal of this version is to give an idea of principles JAGOM is based "
+#~ "on, and to get attention of interested people"
+#~ msgstr ""
+#~ "Obiettivo di questa versione è dare l'idea dei principi su cui JAGOM si "
+#~ "fonda e iniziare così a calamitare l'attenzione delle persone interessate"
+
+#~ msgid "Read the 0.0.9 announcement"
+#~ msgstr "Leggi l'annuncio di rilascio della 0.0.9"
 
 #~ msgid ""
 #~ "\n"

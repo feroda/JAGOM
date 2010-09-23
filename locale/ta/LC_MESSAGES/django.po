@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 21:50+0200\n"
+"POT-Creation-Date: 2010-09-23 02:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 
 #: apps/basic_groups/templates/basic_groups/group.html:17
-#: templates/projects/project.html:23
+#: templates/projects/project.html:23 templates/projects/project_item.html:7
 msgid "Members"
 msgstr ""
 
@@ -173,13 +173,12 @@ msgid ""
 msgstr ""
 
 #: apps/basic_groups/templates/basic_groups/group_item.html:7
-#: templates/projects/project_item.html:7
 msgid "Members:"
 msgstr ""
 
 #: apps/basic_groups/templates/basic_groups/groups.html:11
 #: apps/basic_groups/templates/basic_groups/groups.html:14
-#: templates/site_base.html:36
+#: templates/projects/project_item.html:14
 msgid "Groups"
 msgstr ""
 
@@ -216,20 +215,24 @@ msgstr ""
 msgid "website"
 msgstr ""
 
-#: apps/projects_tree/models.py:13 apps/projects_tree/models.py:33
+#: apps/projects_tree/forms.py:17 apps/projects_tree/models.py:45
+msgid "Make each JAGOM user able to update project notes and manage tickets"
+msgstr ""
+
+#: apps/projects_tree/models.py:16 apps/projects_tree/models.py:38
 #, fuzzy
 msgid "project"
 msgstr "அடையாளம்"
 
-#: apps/projects_tree/models.py:18
+#: apps/projects_tree/models.py:21
 msgid "cloned from"
 msgstr ""
 
-#: apps/projects_tree/models.py:22
+#: apps/projects_tree/models.py:25
 msgid "groups"
 msgstr ""
 
-#: apps/projects_tree/views.py:61
+#: apps/projects_tree/views.py:75
 #, python-format
 msgid "Member %(user)s has been removed from project %(project_name)s deleted."
 msgstr ""
@@ -327,7 +330,7 @@ msgstr ""
 msgid "Last activities"
 msgstr ""
 
-#: templates/intro.html:40 templates/intro.html.py:71 templates/intro.html:95
+#: templates/intro.html:40 templates/intro.html.py:74 templates/intro.html:97
 msgid "Close"
 msgstr ""
 
@@ -335,15 +338,15 @@ msgstr ""
 msgid "Last developers activities"
 msgstr ""
 
-#: templates/intro.html:56
+#: templates/intro.html:57
 msgid "I'll make it!"
 msgstr ""
 
-#: templates/intro.html:63
+#: templates/intro.html:65
 msgid "What is this?"
 msgstr ""
 
-#: templates/intro.html:66
+#: templates/intro.html:68
 msgid ""
 "\n"
 "            JAGOM makes your project management simpler and more reliable!"
@@ -351,49 +354,50 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/intro.html:70
+#: templates/intro.html:71
+msgid ""
+"Roadmap: now you can manage your projects. Soon you will be able to manage "
+"and partecipate in groups. After this you get visibility of active projects "
+"and groups and their relationships"
+msgstr ""
+
+#: templates/intro.html:73
 msgid "More on our vision"
 msgstr ""
 
-#: templates/intro.html:75
+#: templates/intro.html:78
 msgid "What next?"
 msgstr ""
 
-#: templates/intro.html:82 templates/about/what_next.html:49
+#: templates/intro.html:85 templates/about/what_next.html:49
 #, python-format
 msgid ""
 "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
 "s\">logging in</a>."
 msgstr ""
 
-#: templates/intro.html:84 templates/about/what_next.html:51
+#: templates/intro.html:87 templates/about/what_next.html:51
 #, python-format
 msgid "Start by <a href=\"%(login_url)s\">logging in</a>."
 msgstr ""
 
-#: templates/intro.html:86
-msgid ""
-"The goal of this version is to give an idea of principles JAGOM is based on, "
-"and to get attention of interested people"
-msgstr ""
-
-#: templates/intro.html:89
+#: templates/intro.html:91
 msgid "We are looking for you"
 msgstr ""
 
-#: templates/intro.html:94
+#: templates/intro.html:96
 #, python-format
 msgid ""
 "If you share the vision and you want to spend some time on it, ... we hope "
 "someday you'll join us! <a href=\"mailto:%(CONTACT_EMAIL)s\">Contact us</a>"
 msgstr ""
 
-#: templates/intro.html:103
+#: templates/intro.html:105
 msgid "Take a look at JAGOM grain growth"
 msgstr ""
 
-#: templates/intro.html:107
-msgid "Read the 0.0.9 announcement"
+#: templates/intro.html:109
+msgid "Read the announcement of the last features added (italian only)"
 msgstr ""
 
 #: templates/site_base.html:35
@@ -404,19 +408,15 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
-#: templates/site_base.html:39
-msgid "Notices"
-msgstr ""
-
-#: templates/site_base.html:47 templates/about/about.html:5
+#: templates/site_base.html:45 templates/about/about.html:5
 msgid "About"
 msgstr ""
 
-#: templates/site_base.html:48 templates/about/terms.html:5
+#: templates/site_base.html:46 templates/about/terms.html:5
 msgid "Terms of Service"
 msgstr ""
 
-#: templates/site_base.html:49 templates/about/privacy.html:5
+#: templates/site_base.html:47 templates/about/privacy.html:5
 msgid "Privacy Policy"
 msgstr ""
 
@@ -684,15 +684,11 @@ msgid "Tasks"
 msgstr ""
 
 #: templates/projects/project_item.html:9
-msgid "Topics:"
-msgstr ""
-
-#: templates/projects/project_item.html:14
-msgid "Groups:"
+msgid "Topics"
 msgstr ""
 
 #: templates/projects/project_item.html:21
-msgid "Parent:"
+msgid "Template"
 msgstr ""
 
 #~ msgid "headline"
