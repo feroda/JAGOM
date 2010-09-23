@@ -14,11 +14,7 @@
 {% endblock %}
 
 {% block login %}
-    {% if user.is_authenticated %}
-        {% ifopenid %}<img src="{{ STATIC_URL }}images/openid-icon.png" alt="Logged in with OpenID" />{% endifopenid %}<b>{% user_display user %}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
-    {% else %}
-        <a href="{% url acct_login %}">{% trans "Login" %}</a> {% ifsetting ACCOUNT_OPEN_SIGNUP %}{% trans "or" %} <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a>{% endifsetting %}
-    {% endif %}
+    {% include "_account_bar.html" %}
 {% endblock %}
 
 {% block logo_link_image %}<a href="{% url intro %}"><img src="{{ STATIC_URL }}img/logo.jpg" alt="JAGOM" width="76" /></a>{% endblock %}
@@ -33,40 +29,22 @@
         </select>
     </form>
 {% endblock %}
-{% comment %}
 {% block right_tabs %}
     {% if user.is_authenticated %}
         <ul class="tabs">{% spaceless %}
-            <li id="tab_profile"><a href="{% url profile_detail user %}">{% trans "Profile" %}</a></li>
-            <li id="tab_groups"><a href="{% url group_list %}">{% trans "Groups" %}</a></li>
+            <li id="tab_profile"><a href="{% url profile_detail user.username %}">{% trans "Profile" %}</a></li>
+{#NOT AVAILABLE IN 0.1            <li id="tab_groups"><a href="{% url group_list %}">{% trans "Groups" %}</a></li> #}
             {# <li id="tab_tribes"><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></li> #}
             <li id="tab_projects"><a href="{% url project_list %}">{% trans "Project" %}</a></li>
-            <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
+{#NOT AVAILABLE IN 0.1            <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li> #}
         {% endspaceless %}</ul>
     {% endif %}
 {% endblock %}
-{% endcomment %}
 
-{% block footer %}
-<div class="legal">
-    &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">BeFair s.n.c.</a>&gt;
+{% block legalities %}
     - <a href="{% url about %}">{% trans "About" %}</a>
     - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
     - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-</div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://base.befair.it/piwik/" : "http://base.befair.it/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://base.befair.it/piwik/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tag -->
 {% endblock %}
 
 {% block extra_body_base %}

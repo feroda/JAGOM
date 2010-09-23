@@ -51,28 +51,31 @@
     <!-- Start main content -->
     <div class="table_layout center">
         <div class="cell_layout" style="min-width: 15em;">
+            {% comment %} 
             <p style="margin: 0.5em 0;">
                 <video width="200" src="{{ STATIC_URL }}videos/0_IllMakeIt-{{ LANGUAGE_CODE }}.ogv" style="display:none" id="illmakeit-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
                 <a href="#" onclick="$(this).hide(); $('video#illmakeit-video').fadeIn(); document.getElementById('illmakeit-video').play();">{% trans "I'll make it!" %}</a>
             </p>
+            {% endcomment %}
             <p class="appear" id="box-fortune">Loading fortune...</p>
         </div>
-        <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn(); $('#head').fadeTo('slow',0.9); document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
+        <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn();  document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
             <p>
-            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "What is this?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
+            <p class="what_next">
             {% blocktrans %}
-            JAGOM is a social network and a projects forge.<p />
-            Projects are small grain of mustard seeds that JAGOM helps to grow.<br />These grains are seeded in gardens which are groups of people who really care of the seed and do the job to make the seed grow. People are the seeders.<p />
+            JAGOM makes your project management simpler and more reliable!<p />
             {% endblocktrans %}
-            <p>
+            </p><p>{% blocktrans %}Roadmap: now you can manage your projects, in few days we will end with translation. Soon you will be able to manage and partecipate in groups. After this you get visibility of active projects and groups and their relationships{% endblocktrans %}
+            </p><p>
                 <a href="http://www.jagom.org/trac/JAGOM/wiki" target="_blank">{% trans "More on our vision" %}</a>
                 <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div>
             <hr />
-            <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "What next?" %}</a></h2>
             <div style="display:none; max-width:250px;" class="text-justify">
             {% url acct_login as login_url %}
             
@@ -83,7 +86,15 @@
                 {% else %}
                     {% blocktrans %}Start by <a href="{{ login_url }}">logging in</a>.{% endblocktrans %}
                 {% endifsetting %}
-                <p>{% blocktrans %}The goal of this version is to give an idea of principles JAGOM is based on, and to get attention of interested people{% endblocktrans %}</p>
+            </p>
+            </div><hr />
+            <h2 onclick="$(this).next('div').toggle('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
+
+            <div style="display:none; max-width:250px;" class="text-justify">
+            
+            <p>
+				{% blocktrans %}If you share the vision and you want to spend some time on it, ... we hope someday you'll join us! <a href="mailto:{{ CONTACT_EMAIL }}">Contact us</a>{% endblocktrans %}
+                <a class="right" href="#" onclick="$(this).parent().parent().hide('slow');">{% trans "Close" %}</a>
             </p>
             </div><hr />
             <h2 onclick="$(this).next('div').show('slow');"><a href="#" style="text-decoration:none;">{% trans "We are looking for you" %}</a></h2>
@@ -97,37 +108,18 @@
             </div>
         </span>
     </div>
-    <video src="{{ STATIC_URL }}0.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
+    <video src="{{ STATIC_URL }}intro.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
     </p>
     <p class="what_next">
-        <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').show('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
+        <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').toggle('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
         
     </p>
 	<p class="what_next">
-		<a href="http://www.befair.it/2010/06/29/annuncio-di-rilascio-jagom-0-0-9/">{% trans "Read the 0.0.9 announcement" %}</a>
+		<a href="http://www.befair.it/2010/06/29/annuncio-di-rilascio-jagom-0-1/">{% trans "Read the announcement of the last features added (italian only)" %}</a>
 	</p>
 
 {% endblock %}
             
-{% block footer %}
-    <div class="legal text-center">
-        JAGOM {{ VERSION }} &copy; 2010 &lt;<a href="http://www.linkedin.com/in/lucaferroni" target="_blank">Luca Ferroni</a> - <a href="http://www.befair.it" target="_blank">BeFair s.n.c.</a>&gt;
-    </div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://base.befair.it/piwik/" : "http://base.befair.it/piwik/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 2);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="http://base.befair.it/piwik/piwik.php?idsite=2" style="border:0" alt="" /></p></noscript>
-<!-- End Piwik Tag -->
-{% endblock %}
-
 {% block extra_body_base %}
     <script type="text/javascript">
         var timerInterval = 10000;
@@ -148,15 +140,25 @@ piwikTracker.enableLinkTracking();
                 $(data).find('item').each ( function () {
                     var item = $(this);
                     var title = item.find('title').text();
-                    //Hack
+                    //FIXME Hack
                     if (title.indexOf('Changeset') != -1) {
                         title = 'Modifica al programma: ' + title.substr(64);
+                    } else 
+                    if ((title.indexOf('Ticket') == 0)||(title.indexOf('Segnalazione') == 0)) {
+                        var isubject= title.indexOf("(");
+                        var first_part = title.substr(0, isubject);
+                        //created by user 
+                        var isubject_end = title.lastIndexOf(")");
+                        var second_part= title.substr(isubject_end+2); 
+                        //ticket subject
+                        var subject = title.substr(isubject+1, isubject_end-isubject-1); 
+                        title = subject + " (" + second_part + ")";
                     }
+                    //End hack
                     var author = item.find('dc:creator').text();
                     var pubDate = item.find('pubDate').text();
 
                     var link = item.find('link').text();
-                    var description = item.find('description').text();
 
                     // now create a var 'html' to store the markup we're using
                     // to output the feed to the browser window
@@ -165,7 +167,8 @@ piwikTracker.enableLinkTracking();
                     html += "<a href=\"" + link + "\" target=\"_blank\"> " + title + "<\/a>";
                     html += "<\/h2>";
                     html += "<em class=\"date\">" + pubDate + "<\/em>";
-                    html += "<p class=\"description\">" + description + "<\/p>";
+                    //var description = item.find('description').text();
+                    //html += "<p class=\"description\">" + description + "<\/p>";
                     html += "<\/div>";
          
                     //put that feed content on the screen!
@@ -177,7 +180,11 @@ piwikTracker.enableLinkTracking();
         $('document').ready(function() {
             periodicalFortune();
             //update_rss_feed(JAGOM_timeline_feed_url, $('#what-are-we-doing-content'));
+            $('body').mouseenter(function() {
+                $('#head').fadeTo('slow', 0.9);
+            });
         });
+
     </script>
     {% block extra_body %}{% endblock %}
 {% endblock %}

@@ -14,6 +14,9 @@
 .row_group_layout { display : table-row-group; }
 .table_layout { display : table; }
 .inline { display : inline; }
+a, a:visited {
+    color: #B33;
+}
 
 #head {
     background: none;
@@ -46,4 +49,9 @@
     border-bottom:1px solid #99BBCC;
     margin:0;
     padding:0;
+}
+
+.delete-icon {
+    float:right;
+    margin-left:0;
 }

@@ -35,11 +35,11 @@
     float:left;
     position:absolute;
     background-color: white;
+    z-index:1010;
 }
 
 .rss-reader > h2 {
     background-color:#C6C400;
-    border-bottom:1px solid lightgrey;
     margin:0;
     padding:0 0.2em;
 }

@@ -1,0 +1,19 @@
+
+. trac_venv/bin/activate
+pip install configobj
+
+# Update trac.ini with inherit ../../etc/trac.ini
+
+deactivate
+. pinax_venv/bin/activate 
+cd JAGOM
+
+# Resync pinax db and update fixtures
+./jagomd upgrade
+./jagomd runserver
+
+# You need to redirect trac login and logout. In apache.conf add:
+#RewriteEngine on
+#RewriteRule ^(/trac/.*/)login$ http://%{HTTP_HOST}/account/login?backto=$1 [L,QSA]
+#RewriteRule ^(/trac/.*/)logout$ http://%{HTTP_HOST}/account/logout?backto=$1 [L,QSA]
+

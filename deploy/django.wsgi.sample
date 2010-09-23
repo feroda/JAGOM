@@ -1,0 +1,38 @@
+#!/home/fero/src/jagom/pinax_venv/bin/python
+# -*- coding: utf-8 -*-
+#
+
+# Copyright (C)2010 Luca Ferroni
+# All rights granted
+
+import os
+import sys
+
+j = os.path.join
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+VENV_ROOT='/home/fero/src/jagom/pinax_venv'
+PYVER=2.6
+PYLIBDIR=j(VENV_ROOT, 'lib', 'python%s' % PYVER)
+PYSITEDIR=j(PYLIBDIR, 'site-packages')
+
+JAGOM_DIR=j('/home','fero','src','jagom','JAGOM')
+
+sys.path = [JAGOM_DIR, j(JAGOM_DIR, 'apps')]
+
+def append_egg(arg, dirname, fnames):
+
+	for i,fname in enumerate(fnames):
+		if fname.endswith(".egg"):
+			sys.path.append(os.path.join(dirname,fname))
+		del fnames[i]
+
+os.path.walk(PYLIBDIR, append_egg, None)
+
+SYSPYLIBDIR = j('/usr','lib','python%s' % PYVER)
+
+sys.path += [ PYLIBDIR, PYSITEDIR, j(PYLIBDIR, 'lib-dynload'), SYSPYLIBDIR, j(SYSPYLIBDIR, 'site-packages') ]
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
