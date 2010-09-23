@@ -283,6 +283,7 @@ msgstr ""
 "\n"
 "        Per maggiori informazioni su Pinax, visita\n"
 "        <a href=\"http://pinaxproject.com/\">http://pinaxproject.com/</a>.\n"
+"        "
 
 #: templates/homepage.html:30
 msgid "About this project"
@@ -306,6 +307,7 @@ msgstr ""
 "aggiuntivi,\n"
 "        tribù e progetti, che mostrano diversi tipi di associazione e "
 "applicazioni.\n"
+"        "
 
 #: templates/homepage.html:44
 #, python-format
@@ -726,6 +728,7 @@ msgstr ""
 "\n"
 "                        Non ancora. Vai a <a href=\"%(wiki_url)s\" title="
 "\"wiki\">wiki</a> per iniziare un nuovo articolo.\n"
+"                    "
 
 #: templates/projects/project.html:181
 msgid "Tasks"
