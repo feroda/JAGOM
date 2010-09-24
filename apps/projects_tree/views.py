@@ -40,11 +40,11 @@ def create(request, form_class=ProjectTreeForm, template_name="projects/create.h
         language = project_form.cleaned_data['language']
         open_updates = project_form.cleaned_data['open_updates']
 
-        # Save parent and members group
-        parent = project_form.cleaned_data.get('parent', 
+        # Save template and members group
+        template = project_form.cleaned_data.get('template', 
                     get_base_project_for_language(language)
         )
-        project_tree = ProjectTree(project=project, parent=parent)
+        project_tree = ProjectTree(project=project, parent=template)
         project_tree.save()
 #        member_groups = project_form.cleaned_data['member_groups']
 #        for g in member_groups:
