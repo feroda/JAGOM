@@ -53,17 +53,19 @@ def deactivate_trac_env(sender, **kwargs):
     prj = instance.project
     slug = prj.slug.encode(encoding) 
     prj_path = os.path.join(settings.PRJS_ENVS_PATH, slug)
-    c = 1
-    while c:
-        # It may be deleted in the past, created again and deleting now
-        try:
-            dst = "%s/.%s.%d" % (settings.PRJS_ENVS_PATH,slug, c)
-            base.log.debug("Project %s removed. Moving data to %s" % (prj, dst))
-            os.rename(prj_path, dst)
-        except OSError:
-            c += 1
-        else:
-            break
+#    c = 1
+#    while c:
+#        # It may be deleted in the past, created again and deleting now
+    try:
+        #dst = "%s/.%s.%d" % (settings.PRJS_ENVS_PATH,slug, c)
+        dst = "%s/.%s" % (settings.PRJS_ENVS_PATH,slug)
+        base.log.debug("Project %s removed. Moving data to %s" % (prj, dst))
+        os.rename(prj_path, dst)
+    except OSError:
+#        c += 1
+        pass
+#    else:
+#        break
         
     return True
 
