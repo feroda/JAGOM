@@ -56,7 +56,6 @@ done
 cd $PRJ_ENV_ROOT
 . bin/activate
 trac-admin $PRJ_ROOT upgrade
-trac-admin $PRJ_ROOT permission add $ADMIN TRAC_ADMIN
 
 # remove all wiki/Private* pages
 

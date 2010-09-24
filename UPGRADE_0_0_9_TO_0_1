@@ -1,4 +1,10 @@
 
+# Backup your data
+cd JAGOM
+./jagomd dumpdata > dump.json
+
+cd ..
+
 . trac_venv/bin/activate
 pip install configobj
 
@@ -9,6 +15,12 @@ deactivate
 cd JAGOM
 
 # Resync pinax db and update fixtures
+./jagomd syncdb
+./jagomd reset contenttypes 
+./jagomd reset auth
+./jagomd loaddata dump.json
+./jagomd dbshell < apps/projects_tree/sql/projects.sql
+./jagomd dbshell < apps/projects_tree/sql/project_profile.sql
 ./jagomd upgrade
 ./jagomd runserver
 

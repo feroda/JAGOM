@@ -13,21 +13,22 @@ virtualenv --no-site-packages --clear --distribute trac_venv
 
 . trac_venv/bin/activate
 pip install Babel
-pip install Trac==dev
+pip install Trac
 pip install configobj Pygments
 easy_install http://trac-hacks.org/svn/tracwysiwygplugin/0.12
 
 deactivate
 
 # Web server should have write permissions to trac environments
+mkdir trac_venv/tracs
 env_parent_dir=trac_venv/tracs
-chgrp www-data $env_parent_dir
-chmod g+ws $env_parent_dir
+chown www-data $env_parent_dir
 cd $env_parent_dir
 ln -s ../../JAGOM/tracstuff/000-LINTENV-it .
 ln -s ../../JAGOM/tracstuff/000-LINTENV-en .
 cd ..
 ln -s ../JAGOM/tracstuff/etc .
+cd ..
 
 # Configure web server according to documentation
 
@@ -35,11 +36,13 @@ ln -s ../JAGOM/tracstuff/etc .
 virtualenv --no-site-packages --clear --distribute pinax_venv
 
 . pinax_venv/bin/activate
-pip install PIL
-pip install pysqlite
-pip install Pinax
-pinax-admin setup_project -b sample_group JAGOM
+pip install PIL pysqlite Pinax
+
+# This is needed to let pinax download requirements for sample_group pinax app
+pinax-admin setup_project -b sample_group fakeproject
+
+# Clone the git repo
+git clone git://github.com/feroda/JAGOM.git JAGOM
 cd JAGOM
-python manage.py syncdb
-python manage.py runserver
+./jagomd runserver
 
