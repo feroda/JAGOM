@@ -48,5 +48,5 @@ class ProjectProfile(models.Model):
     def get_default_template(self):
         default_slug = os.path.basename(settings.PRJ_LINT_PATH)
         base_slug_array =  default_slug.rsplit('-')
-        base_project_slug = "-".join(base_slug_array[:-1] + [language])
+        base_project_slug = "-".join(base_slug_array[:-1] + [self.language])
         return Project.objects.get(slug=base_project_slug)

@@ -65,7 +65,9 @@
         <h1>{% trans "Project" %} {{ project.name }}</h1>
         
         <p>
-            {% trans project.relations.template.verbose_name %}: <tt>{{ project.relations.template }}</tt><br />
+            {% if project.relations.template != project.profile.get_default_template %}
+                {% trans "Template" %}: <tt>{{ project.relations.template }}</tt><br />
+            {% endif %}
             {% trans "Slug" %}: <tt>{{ project.slug }}</tt><br />
             {% trans "Creator" %}: <a href="{% url profile_detail project.creator.username %}">{% user_display project.creator %}</a><br />
             {% trans "Created" %}: {{ project.created|date }}

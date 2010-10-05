@@ -22,15 +22,15 @@ def activate_trac_env(sender, **kwargs):
     if kwargs['created']:
         base.log.debug("New project %s created" % prj)
         try:
-            parent_slug = prj.relations.parent.slug
+            template_slug = prj.relations.template.slug
         except ProjectTree.DoesNotExist:
             raise
-        parent_path = os.path.join(settings.PRJS_ENVS_PATH, parent_slug)
+        template_path = os.path.join(settings.PRJS_ENVS_PATH, template_slug)
         creator = prj.creator.username
-        base.log.debug("slug=%s, creator=%s, name=%s, parent_path=%s" % (slug, creator, name, parent_path))
+        base.log.debug("slug=%s, creator=%s, name=%s, template_path=%s" % (slug, creator, name, template_path))
         base.execute_and_log([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
-            slug, creator, name, description, parent_path,
+            slug, creator, name, description, template_path,
         ])
 
     else:
