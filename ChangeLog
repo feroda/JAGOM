@@ -1,0 +1,13 @@
+05.10.2010 Luca Ferroni <fero@jagom.org>
+
+    * 0.1 release
+    * ChangeLog starts!
+    * Create projects
+    * Manage members of your own projects
+    * Manage project environment. It is trac:
+        - so you can define milestones
+        - write notes in wiki
+        - add tickets related to milestones
+    * Add Private wiki pages readable only by project members
+    * Clone projects from templat. Default is to clone from a basic template.
+

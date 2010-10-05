@@ -65,10 +65,10 @@
         <h1>{% trans "Project" %} {{ project.name }}</h1>
         
         <p>
-            {% trans "Cloned from:" %} <tt>{{ project.relations.parent }}</tt><br />
-            {% trans "Slug:" %} <tt>{{ project.slug }}</tt><br />
-            {% trans "Creator:" %} <a href="{% url profile_detail project.creator.username %}">{% user_display project.creator %}</a><br />
-            {% trans "Created:" %} {{ project.created|date }}
+            {% trans "Template" %}: <tt>{{ project.relations.parent }}</tt><br />
+            {% trans "Slug" %}: <tt>{{ project.slug }}</tt><br />
+            {% trans "Creator" %}: <a href="{% url profile_detail project.creator.username %}">{% user_display project.creator %}</a><br />
+            {% trans "Created" %}: {{ project.created|date }}
             <br />
             {% show_tags_for project %}
         </p>

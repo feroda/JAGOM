@@ -22,8 +22,8 @@ class ProjectTreeForm(ProjectForm):
 #        self.fields["member_groups"].choices = map(lambda x: (x.pk, x.name), Group.objects.all()) 
         self.fields["language"].initial=settings.LANGUAGES[0][0]
 
-    def clean_parent(self):
-        return Project.objects.get(pk=int(self.data["parent"]))
+    def clean_template(self):
+        return Project.objects.get(pk=int(self.data["template"]))
 
 #    def clean_member_groups(self):
 #        return map(lambda pk: Group.objects.get(pk=int(pk)), self.data.get("member_groups",[]))

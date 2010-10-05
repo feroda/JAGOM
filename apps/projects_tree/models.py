@@ -16,9 +16,9 @@ class ProjectTree(models.Model):
         verbose_name = _("project"),
         null=False
     )
-    parent = models.ForeignKey(Project,
-        related_name = "children",
-        verbose_name = _("cloned from")
+    template = models.ForeignKey(Project,
+        related_name = "instances",
+        verbose_name = _("template")
     )
 
     member_groups = models.ManyToManyField(BasicGroup,
@@ -26,7 +26,7 @@ class ProjectTree(models.Model):
     )
     
     class Meta:
-        unique_together = [("parent", "project")]
+        unique_together = [("template", "project")]
 
 class ProjectProfile(models.Model):
     """
