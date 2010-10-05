@@ -26,6 +26,9 @@ class ProjectTree(models.Model):
         verbose_name = _("groups")
     )
     
+    def __unicode__(self):
+        return u"%s from %s" % (self.project, self.template)
+
     class Meta:
         unique_together = [("template", "project")]
 

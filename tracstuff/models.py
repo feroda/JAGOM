@@ -3,7 +3,7 @@ from django.conf import settings
 
 from projects_tree.models import ProjectProfile, ProjectTree
 from pinax.apps.projects.models import Project
-import subprocess, os, sys
+import subprocess, os, sys, time
 import base
 
 encoding = 'latin-1'
@@ -53,19 +53,14 @@ def deactivate_trac_env(sender, **kwargs):
     prj = instance.project
     slug = prj.slug.encode(encoding) 
     prj_path = os.path.join(settings.PRJS_ENVS_PATH, slug)
-#    c = 1
-#    while c:
-#        # It may be deleted in the past, created again and deleting now
-    try:
-        #dst = "%s/.%s.%d" % (settings.PRJS_ENVS_PATH,slug, c)
-        dst = "%s/.%s" % (settings.PRJS_ENVS_PATH,slug)
-        base.log.debug("Project %s removed. Moving data to %s" % (prj, dst))
+    if getattr(settings, "PRJS_ENVS_PATH_OLDIES", None):
+        dst = os.path.join(settings.PRJS_ENVS_PATH_OLDIES, ".%s.%d" % (slug, int(time.time())))
+        base.log.debug("Removing project %s and moving data to %s" % (prj, dst))
         os.rename(prj_path, dst)
-    except OSError:
-#        c += 1
-        pass
-#    else:
-#        break
+    else:
+        import shutil
+        base.log.debug("Removing project %s" % prj)
+        shutil.rmtree(prj_path)
         
     return True
 
