@@ -20,8 +20,8 @@
             {% endfor %}
         </ul>
 {% endcomment %}
-        {% trans "Template" %}: 
-            {% with project.relations.parent as p %}
+            {% with project.relations.template as p %}
+            {% trans p.verbose_name|capfirst %}: 
             <a href="{{ p.get_absolute_url }}">{{ p }}</a>
             {% endwith %}
     </div>

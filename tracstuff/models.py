@@ -42,7 +42,7 @@ def activate_trac_env(sender, **kwargs):
 
     return True
 
-models.signals.post_save.connect(activate_trac_env, sender=ProjectProfile)
+models.signals.post_save.connect(activate_trac_env, sender=ProjectTree)
 
 def deactivate_trac_env(sender, **kwargs):
     """
@@ -69,7 +69,7 @@ def deactivate_trac_env(sender, **kwargs):
         
     return True
 
-models.signals.post_delete.connect(deactivate_trac_env, sender=ProjectProfile)
+models.signals.post_delete.connect(deactivate_trac_env, sender=ProjectTree)
 
 def update_members_list(sender, **kwargs):
     """
