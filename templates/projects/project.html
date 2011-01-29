@@ -65,9 +65,6 @@
         <h1>{% trans "Project" %} {{ project.name }}</h1>
         
         <p>
-            {% if project.relations.template != project.profile.get_default_template %}
-                {% trans "Template" %}: <tt>{{ project.relations.template }}</tt><br />
-            {% endif %}
             {% trans "Slug" %}: <tt>{{ project.slug }}</tt><br />
             {% trans "Creator" %}: <a href="{% url profile_detail project.creator.username %}">{% user_display project.creator %}</a><br />
             {% trans "Created" %}: {{ project.created|date }}
@@ -141,10 +138,7 @@
                 </ul>
             </p>
         {% endcomment %}
-            <h2>{% trans "Let your grain grow!" %}</h2>
-            <p>
-                {% trans "Go to" %} <a href="{{ PRJS_URL }}{{ project.slug }}">{% trans "the project management page" %}</a>
-            </p>
+            <h2><a href="{{ PRJS_URL }}{{ project.slug }}">{% trans "Let your grain grow!" %}</a></h2>
             {% comment %}
             <h2>{% trans "Discussion Topics" %}{% if project.topics.all.count %} ({{ project.topics.all.count }}){% endif %}</h2>
             

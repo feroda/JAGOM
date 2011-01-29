@@ -14,7 +14,7 @@ def execute_and_log(cmd_args):
     env['JAGOM_HOME'] = settings.PROJECT_ROOT
     env['PYTHONPATH'] = ':'.join(sys.path)
     env['PATH'] += ":%s" % os.path.join(settings.PROJECT_ROOT, 'bin')
-    log.debug("Executing: %s" % " ".join(map(lambda x : x.encode(encoding), cmd_args)))
+    log.debug("Executing: %s" % " ".join(map(lambda x : x.decode(encoding), cmd_args)))
     p = subprocess.Popen(cmd_args, 
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env
     )
