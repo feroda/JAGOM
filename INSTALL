@@ -14,8 +14,9 @@ virtualenv --no-site-packages --clear --distribute trac_venv
 . trac_venv/bin/activate
 pip install Babel
 pip install Trac
-pip install configobj Pygments
+pip install configobj Pygments utidylib lxml
 easy_install http://trac-hacks.org/svn/tracwysiwygplugin/0.12
+easy_install http://trac-hacks.org/svn/odtexportplugin/0.11
 
 deactivate
 

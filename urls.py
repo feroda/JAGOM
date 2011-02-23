@@ -18,13 +18,8 @@ handler500 = "pinax.views.server_error"
 
 
 urlpatterns = patterns("",
-    url(r"^$", direct_to_template, {
-        "template": "intro.html",
-    }, name="intro"),
-    
-    url(r"^home/$", direct_to_template, {
-        "template": "homepage.html",
-    }, name="home"),
+    url(r"^$", "base.views.home", name="home"), 
+    url(r"^intro/$", direct_to_template, { "template": "intro.html" }, name="intro"),
     
     #JAGOM specific views
     url(r"^projects/", include("projects_tree.urls")),
