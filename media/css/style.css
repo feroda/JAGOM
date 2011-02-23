@@ -55,3 +55,39 @@ a, a:visited {
     float:right;
     margin-left:0;
 }
+
+.rss-reader {
+    border-bottom:1px solid lightgrey;
+    border-left:1px solid lightgrey;
+    border-right:1px solid lightgrey;
+    border-top:1px solid lightgrey;
+    font-size:0.8em;
+    max-width:34em;
+    min-width:8em;
+    text-align:left;
+    background-color: white;
+}
+
+.rss-reader > h2 {
+    background-color:#C6C400;
+    margin:0;
+    padding:0 0.2em;
+}
+
+a.close {
+    float:right;
+    margin-top: 0.2em;
+    font-size:0.7em;
+    text-decoration:none;
+    font-weight:normal;
+}
+.rss-reader-content {
+    padding:0 0.5em;
+}
+
+.entry {
+}
+
+.postTitle {
+    font-size: 1.2em;
+}
