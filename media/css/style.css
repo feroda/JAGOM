@@ -66,6 +66,7 @@ a, a:visited {
     min-width:8em;
     text-align:left;
     background-color: white;
+    margin-bottom: 20px;
 }
 
 .rss-reader > h2 {
@@ -83,6 +84,11 @@ a.close {
 }
 .rss-reader-content {
     padding:0 0.5em;
+}
+
+a.block-title {
+    text-decoration:none;
+    color: #333;
 }
 
 .entry {

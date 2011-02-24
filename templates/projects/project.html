@@ -16,6 +16,7 @@
 {% block extra_head %}
     {{ block.super }}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.icalendar.min.js"></script>
 {% endblock %}
 {% block head_title %}{{ project.name }}{% endblock %}
 
@@ -45,10 +46,21 @@
                     {% if project.members.all|length|divisibleby:"4" %}{% else %}</tr>{% endif %}
                 </table>
             </div>
+    <!-- Milestones -->
+    <div class="rss-reader" id="milestones">
+        <h2>
+            <a href="{{ PRJS_URL }}/{{ project.slug }}/roadmap?format=ics"><img src="{{ STATIC_URL }}img/ics16x16.png" /></a> 
+            <a href="{{ PRJS_URL }}/{{ project.slug }}/roadmap" class="block-title">{% trans "Milestones" %}</a> 
+            <a href="#" class="close" onclick="$('#milestones').hide('slow');">{% trans "Close" %}</a>
+        </h2>
+        <div class="rss-reader-content" id="milestones-content">
+        </div>
+    </div>
+    <!-- Last activities -->
     <div class="rss-reader" id="what-are-we-doing" style="display:none;">
         <h2>
             <a href="{{ PRJS_URL }}/{{ project.slug }}/timeline?milestone=on&ticket=on&ticket_details=on&wiki=on&max=8&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a> 
-            {% trans "Last activities" %} 
+            <a href="{{ PRJS_URL }}/{{ project.slug }}/timeline" class="block-title">{% trans "Last activities" %}</a> 
             <a href="#" class="close" onclick="$('#what-are-we-doing').hide('slow');">{% trans "Close" %}</a>
         </h2>
         <div class="rss-reader-content" id="what-are-we-doing-content">
@@ -202,9 +214,13 @@
     <script type="text/javascript">
             
         $(document).ready(function() {
-            var url=$('#what-are-we-doing h2 a').attr('href'); 
-            update_rss_feed(url, $('#what-are-we-doing-content')); 
+            var last_activities_url=$('#what-are-we-doing h2 a').attr('href'); 
+            update_rss_feed(last_activities_url, $('#what-are-we-doing-content')); 
             $('#what-are-we-doing').toggle('slow');
+
+
+            var milestones_url=$('#milestones h2 a').attr('href'); 
+            update_ical_feed(milestones_url, $('#milestones-content')); 
 
             $('#edit-project').hide();
             $('#edit-project-toggle').click(function() {
@@ -262,7 +278,7 @@
                     // to output the feed to the browser window
                     var html = "<div class=\"entry\">";
                     html += "<h2 class=\"postTitle\">";
-                    html += "<a href=\"" + link + "\" target=\"_blank\"> " + title + "<\/a>";
+                    html += "<a href=\"" + link + "\" target=\"_blank\">" + title + "<\/a>";
                     html += "<\/h2>";
                     html += "<em class=\"date\">" + pubDate + "<\/em>";
                     //var description = item.find('description').text();
@@ -272,6 +288,33 @@
                     //put that feed content on the screen!
                     feedContentElement.append($(html));
                 });
+            });
+        };
+
+        function update_ical_feed(feedUrl, feedContentElement) {
+            //Thanks to 
+            //http://visualrinse.com/2008/09/24/how-to-build-a-simple-rss-reader-with-jquery/
+            feedContentElement.empty();
+            feedContentElement.append('<center><img src="{{ STATIC_URL}}img/ajax-loader.gif" /></center>');
+            $.get('{% url feed_proxy %}', { url: feedUrl }, function(data) {
+                feedContentElement.empty();
+                var ical = $.icalendar.parse(data);
+                for each (item in ical.vevent) {
+                    
+                    // now create a var 'html' to store the markup we're using
+                    // to output the feed to the browser window
+                    var html = "<div class=\"entry\">";
+                    html += "<h2 class=\"postTitle\">";
+                    html += "<a href=\"" + item.url + "\" target=\"_blank\"> " + item.summary + "<\/a>";
+                    html += "<\/h2>";
+                    html += "<em class=\"date\">" + item.dtstamp + "<\/em>";
+                    //var description = item.find('description').text();
+                    //html += "<p class=\"description\">" + description + "<\/p>";
+                    html += "<\/div>";
+         
+                    //put that feed content on the screen!
+                    feedContentElement.append($(html));
+                };
             });
         };
 
