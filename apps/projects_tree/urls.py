@@ -17,8 +17,8 @@ urlpatterns = patterns("",
     # project-specific
     url(r"^project/(?P<group_slug>[-\w]+)/delete/$", "pinax.apps.projects.views.delete", name="project_delete"),
 
-    url(r"^rss/", feeds.LatestProjectFeed()),
-    url(r"^your_projects/rss/", feeds.MyLatestProjectFeed()),
+    url(r"^rss/$", feeds.LatestProjectFeed()),
+    url(r"^rss/user/(?P<username>.+)/$", feeds.UserLatestProjectFeed()),
 
 )
 

@@ -160,6 +160,7 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "groups",
+    "voting",
     "tagging",
     "wakawaka",
     "avatar",
@@ -172,7 +173,7 @@ INSTALLED_APPS = [
     "django_filters",
     "flag",
     "tagging_ext",
-    
+
     # Pinax
     #"pinax.apps.basic_profiles",
     "pinax.apps.account",
@@ -185,6 +186,7 @@ INSTALLED_APPS = [
     "pinax.apps.photos",
     "pinax.apps.projects",
     #"pinax.apps.tribes",
+    "pinax.apps.voting_extras",
     
     # project
     "base",

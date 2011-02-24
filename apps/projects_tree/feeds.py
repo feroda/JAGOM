@@ -1,6 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.syndication.views import Feed
 from pinax.apps.projects.models import Project
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 
 MAXPRJ=10
 
@@ -18,15 +20,20 @@ class LatestProjectFeed(Feed):
     def item_description(self, item):
         return item.description
 
-class MyLatestProjectFeed(LatestProjectFeed):
-    title = _("My latest JAGOM projects")
-    link = "/projects/your_projects/"
-    description = _("My latest projects created in jagom.org")
+class UserLatestProjectFeed(Feed):
 
-    def get_object(self, request):
-        user = request.user
-        return Project.objects.filter(creator=user)
+    def get_object(self, request, username):
+        return get_object_or_404(User, username=username)
+
+    def title(self, obj):
+        return _("JAGOM.org: latest projects for user %s") % obj
+
+    def link(self, obj):
+        return obj.get_absolute_url()
+
+    def description(self, obj):
+        return _("Latest projects for user %s") % obj
 
     def items(self, obj):
-        return obj.order_by('-created')[:MAXPRJ]
+        return Project.objects.filter(creator=obj)[:MAXPRJ]
 
