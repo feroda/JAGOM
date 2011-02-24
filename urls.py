@@ -13,7 +13,6 @@ from pinax.apps.projects.models import Project
 from pinax.apps.tasks.models import Task
 from pinax.apps.topics.models import Topic
 
-
 handler500 = "pinax.views.server_error"
 
 
