@@ -132,6 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "announcements.context_processors.site_wide_announcements",
 
     "context_processors.jagom_settings",
+    #"friends_app.context_processors.invitations",
 ]
 
 INSTALLED_APPS = [
@@ -173,6 +174,8 @@ INSTALLED_APPS = [
     "django_filters",
     "flag",
     "tagging_ext",
+    #"friends",
+
 
     # Pinax
     #"pinax.apps.basic_profiles",

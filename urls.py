@@ -40,6 +40,8 @@ urlpatterns = patterns("",
     url(r"^groups/", include("basic_groups.urls")),
     url(r"^tribes/", include("pinax.apps.tribes.urls")),
     url(r"^flag/", include("flag.urls")),
+    url(r"^avatar/", include("avatar.urls")),
+    #url(r"^invitations/", include("friends_app.urls")),
 
     (r'^i18n/', include('django.conf.urls.i18n')),
 
