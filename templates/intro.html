@@ -122,12 +122,13 @@
             
 {% block extra_body_base %}
     <script type="text/javascript">
-        var timerInterval = 10000;
+        var fortuneTimerInterval = 10000;
+        var headShowTimer = 3000;
         //var JAGOM_timeline_feed_url = 'http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&wiki=on&max=5&authors=&daysback=60&format=rss';
 
         function periodicalFortune() {
             $('#box-fortune').load('{% url get_fortune %}');
-            setTimeout(periodicalFortune, timerInterval); 
+            setTimeout(periodicalFortune, fortuneTimerInterval); 
         };
 
         function update_rss_feed(feedUrl, feedContentElement) {
@@ -176,14 +177,23 @@
                 });
             });
         };
+
+        var head_appeared = 0;
+        function show_head() {
+            if (!head_appeared) {
+                $('#head').fadeTo('slow', 0.9);
+                head_appeared = 1;
+            }
+        }
             
         $('document').ready(function() {
             periodicalFortune();
             var rss_url=$('#rss-url-recent-projects').attr('href');
             update_rss_feed(rss_url, $('#recent-projects-content'));
             $('body').mouseenter(function() {
-                $('#head').fadeTo('slow', 0.9);
+                show_head();
             });
+            setTimeout(show_head, headShowTimer);
         });
 
     </script>
