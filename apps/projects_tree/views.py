@@ -81,5 +81,4 @@ def delete_member(request, group_slug, member_id):
     return HttpResponse("OK")
 
 def project(request, adduser_form_class=MyAddUserForm, **kw):
-
     return pinax_project_project(request, adduser_form_class=adduser_form_class, **kw)

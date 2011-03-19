@@ -1,3 +1,12 @@
+19.03.2011 Luca Ferroni <fero@jagom.org>
+
+    * Show recent new projects in home page
+    * Redirect user to its own projects list if logged in
+    * Cleaner project item visualization in projects list
+    * Show last activities and milestones in project dashboard page
+    * Manage user avatar
+    * Add latest and personal latest projects feeds
+
 05.10.2010 Luca Ferroni <fero@jagom.org>
 
     * 0.1 release
