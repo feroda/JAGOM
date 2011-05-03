@@ -3,7 +3,7 @@ from django.conf import settings
 
 from projects_tree.models import ProjectProfile, ProjectTree
 from pinax.apps.projects.models import Project
-import subprocess, os, sys
+import subprocess, os, sys, time
 import base
 
 encoding = 'latin-1'
@@ -22,15 +22,15 @@ def activate_trac_env(sender, **kwargs):
     if kwargs['created']:
         base.log.debug("New project %s created" % prj)
         try:
-            parent_slug = prj.relations.parent.slug
+            template_slug = prj.relations.template.slug
         except ProjectTree.DoesNotExist:
             raise
-        parent_path = os.path.join(settings.PRJS_ENVS_PATH, parent_slug)
+        template_path = os.path.join(settings.PRJS_ENVS_PATH, template_slug)
         creator = prj.creator.username
-        base.log.debug("slug=%s, creator=%s, name=%s, parent_path=%s" % (slug, creator, name, parent_path))
+        base.log.debug("slug=%s, creator=%s, name=%s, template_path=%s" % (slug, creator, name, template_path))
         base.execute_and_log([ 
             settings.NEW_PRJ_ENV_SCRIPT, 
-            slug, creator, name, description, parent_path,
+            slug, creator, name, description, template_path,
         ])
 
     else:
@@ -42,7 +42,7 @@ def activate_trac_env(sender, **kwargs):
 
     return True
 
-models.signals.post_save.connect(activate_trac_env, sender=ProjectProfile)
+models.signals.post_save.connect(activate_trac_env, sender=ProjectTree)
 
 def deactivate_trac_env(sender, **kwargs):
     """
@@ -53,23 +53,18 @@ def deactivate_trac_env(sender, **kwargs):
     prj = instance.project
     slug = prj.slug.encode(encoding) 
     prj_path = os.path.join(settings.PRJS_ENVS_PATH, slug)
-#    c = 1
-#    while c:
-#        # It may be deleted in the past, created again and deleting now
-    try:
-        #dst = "%s/.%s.%d" % (settings.PRJS_ENVS_PATH,slug, c)
-        dst = "%s/.%s" % (settings.PRJS_ENVS_PATH,slug)
-        base.log.debug("Project %s removed. Moving data to %s" % (prj, dst))
+    if getattr(settings, "PRJS_ENVS_PATH_OLDIES", None):
+        dst = os.path.join(settings.PRJS_ENVS_PATH_OLDIES, ".%s.%d" % (slug, int(time.time())))
+        base.log.debug("Removing project %s and moving data to %s" % (prj, dst))
         os.rename(prj_path, dst)
-    except OSError:
-#        c += 1
-        pass
-#    else:
-#        break
+    else:
+        import shutil
+        base.log.debug("Removing project %s" % prj)
+        shutil.rmtree(prj_path)
         
     return True
 
-models.signals.post_delete.connect(deactivate_trac_env, sender=ProjectProfile)
+models.signals.post_delete.connect(deactivate_trac_env, sender=ProjectTree)
 
 def update_members_list(sender, **kwargs):
     """

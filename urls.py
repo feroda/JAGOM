@@ -13,18 +13,12 @@ from pinax.apps.projects.models import Project
 from pinax.apps.tasks.models import Task
 from pinax.apps.topics.models import Topic
 
-
 handler500 = "pinax.views.server_error"
 
 
 urlpatterns = patterns("",
-    url(r"^$", direct_to_template, {
-        "template": "intro.html",
-    }, name="intro"),
-    
-    url(r"^home/$", direct_to_template, {
-        "template": "homepage.html",
-    }, name="home"),
+    url(r"^$", "base.views.home", name="home"), 
+    url(r"^intro/$", direct_to_template, { "template": "intro.html" }, name="intro"),
     
     #JAGOM specific views
     url(r"^projects/", include("projects_tree.urls")),
@@ -46,6 +40,8 @@ urlpatterns = patterns("",
     url(r"^groups/", include("basic_groups.urls")),
     url(r"^tribes/", include("pinax.apps.tribes.urls")),
     url(r"^flag/", include("flag.urls")),
+    url(r"^avatar/", include("avatar.urls")),
+    #url(r"^invitations/", include("friends_app.urls")),
 
     (r'^i18n/', include('django.conf.urls.i18n')),
 

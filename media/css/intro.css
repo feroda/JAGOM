@@ -11,11 +11,9 @@
     color: #993;
     text-align: left;
     max-width: 15em;
-    float:left;
     margin:0.5em 0;
     max-width:15em;
-    position:absolute;
-    z-index:1000;
+    height: 13em;
 }
 
 #box-fortune .author {
@@ -23,41 +21,9 @@
     text-align:right;
 }
 
-.rss-reader {
-    border-bottom:1px solid lightgrey;
-    border-left:1px solid lightgrey;
-    border-right:1px solid lightgrey;
-    border-top:1px solid lightgrey;
-    font-size:0.8em;
-    max-width:34em;
-    min-width:8em;
-    text-align:left;
+.float-front {
     float:left;
     position:absolute;
-    background-color: white;
     z-index:1010;
 }
 
-.rss-reader > h2 {
-    background-color:#C6C400;
-    margin:0;
-    padding:0 0.2em;
-}
-
-a.close {
-    float:right;
-    margin-top: 0.2em;
-    font-size:0.7em;
-    text-decoration:none;
-    font-weight:normal;
-}
-.rss-reader-content {
-    padding:0 0.5em;
-}
-
-.entry {
-}
-
-.postTitle {
-    font-size: 1.2em;
-}

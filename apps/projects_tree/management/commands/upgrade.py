@@ -31,12 +31,12 @@ class Command(NoArgsCommand):
 
         if settings.VERSION[:1] == (0,1):
             try:
-                default_parent = Project.objects.get(slug=settings.PRJ_LINT_SLUG)
+                default_template = Project.objects.get(slug=settings.PRJ_LINT_SLUG)
             except Project.DoesNotExist:
                 # Older versions named 000-LINTENV to mean 000-LINTENV-it
-                default_parent = Project.objects.get(slug="000-LINTENV")
-                default_parent.slug = "000-LINTENV-it"
-                default_parent.save()
+                default_template = Project.objects.get(slug="000-LINTENV")
+                default_template.slug = "000-LINTENV-it"
+                default_template.save()
 
             for p in Project.objects.all():
                 try:
@@ -44,7 +44,7 @@ class Command(NoArgsCommand):
                 except ProjectTree.DoesNotExist:
                     #Set base project (default is italian language)
                     
-                    project_tree = ProjectTree(project=p, parent=default_parent)
+                    project_tree = ProjectTree(project=p, template=default_template)
                     project_tree.save()
 
                 try:

@@ -33,16 +33,16 @@
 {% endblock %}
         
 {% block body %}
-    <div class="rss-reader" id="what-are-we-doing" style="display:none;">
+    <div class="rss-reader float-front" id="what-are-we-doing" style="display:none;">
         <h2>
-            <a href="http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&ticket_details=on&wiki=on&max=8&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a> 
+            <a id="rss-url-whar-are-we-doing" href="http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&ticket_details=on&wiki=on&max=8&authors=&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a> 
             {% trans "Last activities" %} 
             <a href="#" class="close" onclick="$('#what-are-we-doing').hide('slow');">{% trans "Close" %}</a>
         </h2>
         <div class="rss-reader-content" id="what-are-we-doing-content">
         </div>
     </div>
-    <div class="rss-reader" id="what-dev-are-doing" style="display:none;">
+    <div class="rss-reader float-front" id="what-dev-are-doing" style="display:none;">
         <h2>{% trans "Last developers activities" %} <a href="http://www.jagom.org/trac/JAGOM/timeline?changeset=on&max=10&daysback=60&format=rss"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a></h2>
         <div class="rss-reader-content" id="what-dev-are-doing-content">
         </div>
@@ -58,6 +58,15 @@
             </p>
             {% endcomment %}
             <p class="appear" id="box-fortune">Loading fortune...</p>
+            <div class="rss-reader" id="recent-projects">
+                <h2>
+                    <a id="rss-url-recent-projects" href="http://www.jagom.org/projects/rss/"><img src="{{ STATIC_URL }}img/rss16x16.png" /></a> 
+                    {% trans "Recent projects" %} 
+                    <a href="#" class="close" onclick="$('#recent-projects').hide('slow');">{% trans "Close" %}</a>
+                </h2>
+                <div class="rss-reader-content" id="recent-projects-content">
+                </div>
+            </div>
         </div>
         <span class="cell_layout"><a href="#" onclick="$('img#big-logo').replaceWith($('video#intro-video')); $('video#intro-video').fadeIn();  document.getElementById('intro-video').play();"><img src="{{ STATIC_URL }}img/play_logo.jpg" alt="JAGOM logo" id="big-logo" /></a></span>
         <span class="cell_layout appear" style="vertical-align:middle;">
@@ -99,10 +108,10 @@
             </div>
         </span>
     </div>
-    <video src="{{ STATIC_URL }}intro.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>
+    {#<video src="{{ STATIC_URL }}intro.ogv" style="display:none" id="intro-video" controls>Your browser does not support the <code>video</code> element please use an HTML5 capable browser (like <a href="http://getfirefox.com" target="_blank">Mozilla Firefox)</a>.</video>#}
     </p>
     <p class="what_next">
-        <a onclick="var url=$('#what-are-we-doing h2 a').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').toggle('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
+        <a onclick="var url=$('#rss-url-what-are-we-doing').attr('href'); update_rss_feed(url, $('#what-are-we-doing-content')); $('#what-are-we-doing').toggle('slow');" href="#">{% trans "Take a look at JAGOM grain growth" %}</a>
         
     </p>
 	<p class="what_next">
@@ -113,12 +122,13 @@
             
 {% block extra_body_base %}
     <script type="text/javascript">
-        var timerInterval = 10000;
+        var fortuneTimerInterval = 10000;
+        var headShowTimer = 3000;
         //var JAGOM_timeline_feed_url = 'http://www.jagom.org/trac/JAGOM/timeline?milestone=on&ticket=on&wiki=on&max=5&authors=&daysback=60&format=rss';
 
         function periodicalFortune() {
             $('#box-fortune').load('{% url get_fortune %}');
-            setTimeout(periodicalFortune, timerInterval); 
+            setTimeout(periodicalFortune, fortuneTimerInterval); 
         };
 
         function update_rss_feed(feedUrl, feedContentElement) {
@@ -167,13 +177,23 @@
                 });
             });
         };
+
+        var head_appeared = 0;
+        function show_head() {
+            if (!head_appeared) {
+                $('#head').fadeTo('slow', 0.9);
+                head_appeared = 1;
+            }
+        }
             
         $('document').ready(function() {
             periodicalFortune();
-            //update_rss_feed(JAGOM_timeline_feed_url, $('#what-are-we-doing-content'));
+            var rss_url=$('#rss-url-recent-projects').attr('href');
+            update_rss_feed(rss_url, $('#recent-projects-content'));
             $('body').mouseenter(function() {
-                $('#head').fadeTo('slow', 0.9);
+                show_head();
             });
+            setTimeout(show_head, headShowTimer);
         });
 
     </script>

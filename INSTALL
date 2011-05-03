@@ -14,14 +14,15 @@ virtualenv --no-site-packages --clear --distribute trac_venv
 . trac_venv/bin/activate
 pip install Babel
 pip install Trac
-pip install configobj Pygments
+pip install configobj Pygments utidylib lxml
 easy_install http://trac-hacks.org/svn/tracwysiwygplugin/0.12
+easy_install http://trac-hacks.org/svn/odtexportplugin/0.11
 
 deactivate
 
 # Web server should have write permissions to trac environments
-mkdir trac_venv/tracs
 env_parent_dir=trac_venv/tracs
+mkdir $env_parent_dir
 chown www-data $env_parent_dir
 cd $env_parent_dir
 ln -s ../../JAGOM/tracstuff/000-LINTENV-it .
@@ -30,7 +31,11 @@ cd ..
 ln -s ../JAGOM/tracstuff/etc .
 cd ..
 
-# Configure web server according to documentation
+# Oldies dir as wastebasket to store deleted projects
+mkdir trac_venv/tracs_oldies
+chown www-data trac_venv/tracs_oldies
+
+# Then configure your web server according to documentation
 
 # Initialize PINAX virtual environment
 virtualenv --no-site-packages --clear --distribute pinax_venv

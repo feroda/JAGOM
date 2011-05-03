@@ -132,6 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "announcements.context_processors.site_wide_announcements",
 
     "context_processors.jagom_settings",
+    #"friends_app.context_processors.invitations",
 ]
 
 INSTALLED_APPS = [
@@ -160,6 +161,7 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "groups",
+    "voting",
     "tagging",
     "wakawaka",
     "avatar",
@@ -172,7 +174,9 @@ INSTALLED_APPS = [
     "django_filters",
     "flag",
     "tagging_ext",
-    
+    #"friends",
+
+
     # Pinax
     #"pinax.apps.basic_profiles",
     "pinax.apps.account",
@@ -185,6 +189,7 @@ INSTALLED_APPS = [
     "pinax.apps.photos",
     "pinax.apps.projects",
     #"pinax.apps.tribes",
+    "pinax.apps.voting_extras",
     
     # project
     "base",

@@ -15,4 +15,6 @@ def get_feed(request):
     })
     resp = urllib2.urlopen(req)
     content = resp.read()
-    return HttpResponse(content, mimetype="text/xml")
+    mimetype = resp.info()['Content-Type']
+
+    return HttpResponse(content, mimetype=mimetype)

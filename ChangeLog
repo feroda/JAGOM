@@ -1,0 +1,22 @@
+19.03.2011 Luca Ferroni <fero@jagom.org>
+
+    * Show recent new projects in home page
+    * Redirect user to its own projects list if logged in
+    * Cleaner project item visualization in projects list
+    * Show last activities and milestones in project dashboard page
+    * Manage user avatar
+    * Add latest and personal latest projects feeds
+
+05.10.2010 Luca Ferroni <fero@jagom.org>
+
+    * 0.1 release
+    * ChangeLog starts!
+    * Create projects
+    * Manage members of your own projects
+    * Manage project environment. It is trac:
+        - so you can define milestones
+        - write notes in wiki
+        - add tickets related to milestones
+    * Add Private wiki pages readable only by project members
+    * Clone projects from templat. Default is to clone from a basic template.
+

@@ -15,8 +15,6 @@ from projects_tree.forms import ProjectTreeForm
 from projects_tree.forms import MyAddUserForm
 from projects_tree.models import ProjectTree, ProjectProfile
 
-from projects_tree import get_base_project_for_language
-
 #FIXME: will not be necessary when we will issue a signal upon member deletion
 from tracstuff.models import update_members_list
 
@@ -40,22 +38,22 @@ def create(request, form_class=ProjectTreeForm, template_name="projects/create.h
         language = project_form.cleaned_data['language']
         open_updates = project_form.cleaned_data['open_updates']
 
-        # Save template and members group
-        template = project_form.cleaned_data.get('template', 
-                    get_base_project_for_language(language)
-        )
-        project_tree = ProjectTree(project=project, parent=template)
-        project_tree.save()
-#        member_groups = project_form.cleaned_data['member_groups']
-#        for g in member_groups:
-#            project_tree.member_groups.add(g)
-
-        # Save xattr: after saving project relations
+        # Save profile xattr
         project_profile = ProjectProfile(project=project, 
                             language=language, 
                             open_updates=open_updates
                           )
         project_profile.save()
+
+        # Save template and members group
+        template = project_form.cleaned_data.get('template', 
+                    project_profile.get_default_template()
+        )
+        project_tree = ProjectTree(project=project, template=template)
+        project_tree.save()
+#        member_groups = project_form.cleaned_data['member_groups']
+#        for g in member_groups:
+#            project_tree.member_groups.add(g)
 
         if notification:
             # @@@ might be worth having a shortcut for sending to all users
@@ -83,5 +81,4 @@ def delete_member(request, group_slug, member_id):
     return HttpResponse("OK")
 
 def project(request, adduser_form_class=MyAddUserForm, **kw):
-
     return pinax_project_project(request, adduser_form_class=adduser_form_class, **kw)

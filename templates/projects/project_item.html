@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load extra_tagging_tags %}
 
-<dt>{{ project.name }} (<a href="{{ project.get_absolute_url }}">{{ project.slug }}</a>)</dt>
+<dt><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></dt>
 <dd>{{ project.description }}
     <div class="stats">
         {% trans "Members" %}: <b>{{ project.member_count }}</b>
@@ -20,10 +20,6 @@
             {% endfor %}
         </ul>
 {% endcomment %}
-        {% trans "Template" %}: 
-            {% with project.relations.parent as p %}
-            <a href="{{ p.get_absolute_url }}">{{ p }}</a>
-            {% endwith %}
     </div>
 </dd>
 
